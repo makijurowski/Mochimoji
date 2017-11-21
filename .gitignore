@@ -1,0 +1,90 @@
+/[Bb]uild/
+  
+/[Bb]uilds/  
+
+
+
+# =============== #
+  
+# Unity generated #
+  
+# =============== #
+  
+/[Tt]emp/  
+
+/[Oo]bj/  
+
+UnityGenerated/  
+
+/[Ll]ibrary  
+/
+Assets/AssetStoreTools*  
+
+*.pidb.meta  
+  
+sysinfo.txt
+  
+*.apk  
+.unitypackage
+
+  
+
+# ===================================== #
+  
+# Visual Studio / MonoDevelop generated #  
+
+# ===================================== #
+  
+/.vs/  
+
+ExportedObj/
+  
+*.svd
+  
+*.userprefs  
+
+*.csproj
+  
+*.pidb  
+
+*.suo
+  
+*.sln  
+
+*.user  
+
+*.unityproj  
+
+*.booproj
+  
+.consulo/  
+
+*.tmp
+  
+*.pdb  
+
+# ============ #  
+
+# OS generated #  
+
+# ============ #
+  
+.DS_Store  
+
+.DS_Store?  
+
+._*  
+
+.Spotlight-V100
+  
+.Trashes
+  
+Icon?  
+
+ehthumbs.db  
+
+Thumbs.db
+
+.vscode/
+
+my-label-pkg.json
