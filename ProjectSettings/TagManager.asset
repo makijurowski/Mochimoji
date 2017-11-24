@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
+  - SurprisedEmoji
+  - FrowningEmoji
+  - SadCryingEmoji
+  - NeutralEmoji
+  - ContemptEmoji
+  - SmileEmoji
+  - WebCam
+  - AngryEmoji
+  - PowerUp
+  - DPad
   layers:
   - Default
   - TransparentFX
@@ -40,4 +51,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Controls
+    uniqueID: 4106793243
+    locked: 0
+  - name: Controls_Panel
+    uniqueID: 1651234455
     locked: 0
