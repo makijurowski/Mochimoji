@@ -81,13 +81,10 @@ public class TriggerPowerUpScript : MonoBehaviour {
 		
 		// Current coins
 		coinCount = PlayerPrefs.GetInt("Player Score");
-		Debug.Log("CoinCount: " + coinCount);
 
 		// Calculate coin bonus
 		coinBonus = (20 + Mathf.RoundToInt(emotionScore * 50));
 		coinCount = coinCount + (UnityEngine.Random.Range(coinBonus - 10, coinBonus + 10));
-		Debug.Log("CoinCount Min: " + (coinBonus - 10));
-		Debug.Log("CoinCount Max: "+ (coinBonus + 10));
 
 		// Set score
 		PlayerPrefs.SetInt("Player Score", coinCount);

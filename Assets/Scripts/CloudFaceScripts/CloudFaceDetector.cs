@@ -1,20 +1,20 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Text;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class CloudFaceDetector : MonoBehaviour
 {
-	[Tooltip("Image source component used for making camera shots.")]
-	public WebcamSource imageSource;
+    [Tooltip("Image source component used for making camera shots.")]
+    public WebcamSource imageSource;
 
-	[Tooltip("Image component used for rendering camera shots")]
+    [Tooltip("Image component used for rendering camera shots")]
     public RawImage cameraShot;
 
-	[Tooltip("Whether to recognize the emotions of the detected faces, or not.")]
-	public bool recognizeEmotions = false;
+    [Tooltip("Whether to recognize the emotions of the detected faces, or not.")]
+    public bool recognizeEmotions = false;
 
-	[Tooltip("Text component used for displaying hints and status messages.")]
+    [Tooltip("Text component used for displaying hints and status messages.")]
     public Text hintText;
 
     [Tooltip("Text component used to display face-detection results.")]
@@ -29,7 +29,11 @@ public class CloudFaceDetector : MonoBehaviour
     // AspectRatioFitter component;
     private AspectRatioFitter ratioFitter;
 
+    // Name of current emoji
     public static string EmojiNameOnCloudScript;
+
+    // Submit button
+    public Button submitButton;
 
     void Start()
     {
@@ -38,7 +42,7 @@ public class CloudFaceDetector : MonoBehaviour
             ratioFitter = cameraShot.GetComponent<AspectRatioFitter>();
         }
 
-		hasCamera = imageSource != null && imageSource.HasCamera();
+        hasCamera = imageSource != null && imageSource.HasCamera();
     }
 
     public void Update()
@@ -51,14 +55,14 @@ public class CloudFaceDetector : MonoBehaviour
     public void OnCameraClick()
     {
         hintText.gameObject.SetActive(false);
-        if (!hasCamera) 
-			return;
-        
+        if (!hasCamera)
+            return;
+
         if (DoCameraShot())
         {
-			ClearResultText();
+            ClearResultText();
             StartCoroutine(DoFaceDetection());
-        }        
+        }
     }
 
     // Camera-shot panel on-click event handler
@@ -66,7 +70,7 @@ public class CloudFaceDetector : MonoBehaviour
     {
         if (DoImageImport())
         {
-			ClearResultText();
+            ClearResultText();
             StartCoroutine(DoFaceDetection());
         }
     }
@@ -103,95 +107,97 @@ public class CloudFaceDetector : MonoBehaviour
 
         if (cameraShot)
         {
-			texCamShot = (Texture2D)cameraShot.texture;
+            texCamShot = (Texture2D) cameraShot.texture;
             SetHintText("Wait...");
         }
 
         // Get the face manager instance
-		CloudFaceManager faceManager = CloudFaceManager.Instance;
+        CloudFaceManager faceManager = CloudFaceManager.Instance;
 
         if (!faceManager)
         {
             SetHintText("Check if the FaceManager component exists in the scene.");
         }
-        else if(texCamShot)
+        else if (texCamShot)
         {
-			byte[] imageBytes = texCamShot.EncodeToJPG();
-			yield return null;
+            byte[] imageBytes = texCamShot.EncodeToJPG();
+            yield return null;
 
-			AsyncTask<Face[]> taskFace = new AsyncTask<Face[]>(() => {
-				return faceManager.DetectFaces(imageBytes);
-			});
+            AsyncTask<Face[]> taskFace = new AsyncTask<Face[]>(() =>
+            {
+                return faceManager.DetectFaces(imageBytes);
+            });
 
-			taskFace.Start();
-			yield return null;
+            taskFace.Start();
+            yield return null;
 
-			while (taskFace.State == TaskState.Running)
-			{
-				yield return null;
-			}
+            while (taskFace.State == TaskState.Running)
+            {
+                yield return null;
+            }
 
-			if(string.IsNullOrEmpty(taskFace.ErrorMessage))
-			{
-				faces = taskFace.Result;
+            if (string.IsNullOrEmpty(taskFace.ErrorMessage))
+            {
+                faces = taskFace.Result;
 
-				if(faces != null && faces.Length > 0)
-				{
-					// Stick to detected face rectangles
-					FaceRectangle[] faceRects = new FaceRectangle[faces.Length];
+                if (faces != null && faces.Length > 0)
+                {
+                    // Stick to detected face rectangles
+                    FaceRectangle[] faceRects = new FaceRectangle[faces.Length];
 
-					for(int i = 0; i < faces.Length; i++)
-					{
-						faceRects[i] = faces[i].faceRectangle;
-					}
+                    for (int i = 0; i < faces.Length; i++)
+                    {
+                        faceRects[i] = faces[i].faceRectangle;
+                    }
 
-					yield return null;
+                    yield return null;
 
-					// Get facial emotions
-					if(recognizeEmotions)
-					{
-						// Emotion[] emotions = faceManager.RecognizeEmotions(texCamShot, faceRects);
-						AsyncTask<Emotion[]> taskEmot = new AsyncTask<Emotion[]>(() => {
-							return faceManager.RecognizeEmotions(imageBytes, faceRects);
-						});
+                    // Get facial emotions
+                    if (recognizeEmotions)
+                    {
+                        // Emotion[] emotions = faceManager.RecognizeEmotions(texCamShot, faceRects);
+                        AsyncTask<Emotion[]> taskEmot = new AsyncTask<Emotion[]>(() =>
+                        {
+                            return faceManager.RecognizeEmotions(imageBytes, faceRects);
+                        });
 
-						taskEmot.Start();
-						yield return null;
+                        taskEmot.Start();
+                        yield return null;
 
-						while (taskEmot.State == TaskState.Running)
-						{
-							yield return null;
-						}
+                        while (taskEmot.State == TaskState.Running)
+                        {
+                            yield return null;
+                        }
 
-						if(string.IsNullOrEmpty(taskEmot.ErrorMessage))
-						{
-							Emotion[] emotions = taskEmot.Result;
-							int matched = faceManager.MatchEmotionsToFaces(ref faces, ref emotions);
+                        if (string.IsNullOrEmpty(taskEmot.ErrorMessage))
+                        {
+                            Emotion[] emotions = taskEmot.Result;
+                            int matched = faceManager.MatchEmotionsToFaces(ref faces, ref emotions);
 
-							if(matched != faces.Length)
-							{
-								Debug.Log(string.Format("Matched {0}/{1} emotions to {2} faces.", matched, emotions.Length, faces.Length));
-							}
-						}
-						else
-						{
-							SetHintText(taskEmot.ErrorMessage);
-						}
-					}
+                            if (matched != faces.Length)
+                            {
+                                Debug.Log(string.Format("Matched {0}/{1} emotions to {2} faces.", matched, emotions.Length, faces.Length));
+                            }
+                        }
+                        else
+                        {
+                            SetHintText(taskEmot.ErrorMessage);
+                        }
+                    }
 
-					CloudFaceManager.DrawFaceRects(texCamShot, faces, FaceDetectionUtils.FaceColors);
-					SetHintText(hintMessage);
-					SetResultText(faces);
-				}
-				else
-				{
-					SetHintText("No face(s) detected.");
-				}
-			}
-			else
-			{
-				SetHintText(taskFace.ErrorMessage);
-			}
+                    CloudFaceManager.DrawFaceRects(texCamShot, faces, FaceDetectionUtils.FaceColors);
+                    SetHintText(hintMessage);
+                    SetResultText(faces);
+                }
+                else
+                {
+                    SetHintText("No face(s) detected.");
+                }
+            }
+            else
+            {
+                SetHintText(taskFace.ErrorMessage);
+            }
         }
 
         yield return null;
@@ -199,10 +205,10 @@ public class CloudFaceDetector : MonoBehaviour
 
     // Display image on the camera-shot object
     public void SetShotImageTexture(Texture2D tex)
-    {        
+    {
         if (ratioFitter)
         {
-            ratioFitter.aspectRatio = (float)tex.width / (float)tex.height;
+            ratioFitter.aspectRatio = (float) tex.width / (float) tex.height;
         }
 
         if (cameraShot)
@@ -215,6 +221,7 @@ public class CloudFaceDetector : MonoBehaviour
     public void SetResultText(Face[] faces)
     {
         StringBuilder sbResult = new StringBuilder();
+        submitButton.gameObject.SetActive(true);
 
         if (faces != null && faces.Length > 0)
         {
