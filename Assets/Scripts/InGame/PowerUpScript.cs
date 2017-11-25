@@ -15,13 +15,13 @@ public class PowerUpScript : MonoBehaviour
     public WebcamSource cam;
 
     // Audio triggers
-    public AudioClip powerUpSound;
-    private AudioSource source;
+    // public AudioClip powerUpSound;
+    // private AudioSource source;
 
     private void Awake()
     {
         // Get audio clip.
-        source = GetComponent<AudioSource>();
+        // source = GetComponent<AudioSource>();
         cam.Awake();
     }
 
@@ -40,8 +40,8 @@ public class PowerUpScript : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Add audio when player collects coin.
-            source.PlayOneShot(powerUpSound);
+            // Add audio when player collides with powerUp
+            // source.PlayOneShot(powerUpSound);
             modalPanelObject.SetActive(true);
             selectedEmoji = PowerUpScript.lastEmoji;
             cam.Play();
@@ -56,7 +56,7 @@ public class PowerUpScript : MonoBehaviour
         CloudFaceDetector.EmojiNameOnCloudScript = selectedEmoji.gameObject.tag;
     }
 
-    // If Player moves away from Object, then text will disappear.
+    // If the player moves away from object, then the emoji disappears
     void OnTriggerExit2D(Collider2D collision)
     {
         selectedEmoji.gameObject.SetActive(false);

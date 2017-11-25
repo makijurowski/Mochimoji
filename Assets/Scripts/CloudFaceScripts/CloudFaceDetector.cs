@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,14 +37,20 @@ public class CloudFaceDetector : MonoBehaviour
     // Submit button
     public Button submitButton;
 
+    // Audio for camera click
+    public AudioClip cameraClickSound;
+
+    // Initialize audio source
+    private AudioSource source;
+
     void Start()
     {
         if (cameraShot)
         {
             ratioFitter = cameraShot.GetComponent<AspectRatioFitter>();
         }
-
         hasCamera = imageSource != null && imageSource.HasCamera();
+        source = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -54,6 +62,7 @@ public class CloudFaceDetector : MonoBehaviour
     // Camera panel on-click event handler
     public void OnCameraClick()
     {
+        source.PlayOneShot(cameraClickSound);
         hintText.gameObject.SetActive(false);
         if (!hasCamera)
             return;
