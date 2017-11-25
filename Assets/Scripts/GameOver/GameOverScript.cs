@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour
 {
-    public TextMesh playerScoreText;
-    public TextMesh highestScoreText;
+    public Text playerScoreText;
+    public Text highestScoreText;
 
 
     void Start()
@@ -20,12 +20,28 @@ public class GameOverScript : MonoBehaviour
         System.IO.File.AppendAllText(@"C:\Desktop\MochimojiUsers\" + loggedUsername + ".txt", "\r\n" + score.ToString());
 
         // Get player's score from player preferences.
-        playerScoreText.text = loggedUsername.ToString() + ": " + score.ToString();
+        if (loggedUsername.Length > 0)
+        {
+            playerScoreText.text = loggedUsername.ToString() + ": " + score.ToString();
+        }
+        else
+        {
+            playerScoreText.text = score.ToString();
+        }
 
         // Get highest score from player preferences.
         int highestScore = PlayerPrefs.GetInt("Highest Score");
         string highestScoredPlayer = PlayerPrefs.GetString("Highest Scored Player");
-        highestScoreText.text = highestScoredPlayer.ToString() + ": " + highestScore.ToString();
+
+        // Set highest score
+        if (highestScoredPlayer.Length > 0)
+        {
+            highestScoreText.text = highestScoredPlayer.ToString() + ": " + highestScore.ToString();
+        }
+        else
+        {
+            highestScoreText.text = highestScore.ToString();
+        }
     }
 
 
