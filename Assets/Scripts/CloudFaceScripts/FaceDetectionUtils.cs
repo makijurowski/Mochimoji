@@ -67,41 +67,46 @@ public static class FaceDetectionUtils
 		Scores es = emotion.scores;
 		currentScores = emotion.scores;
 		StringBuilder emotStr = new StringBuilder();
-		
 		currentEmoji = CloudFaceDetector.EmojiNameOnCloudScript;
+		
 		switch (currentEmoji)
 		{
-			case "AngryEmoji":
+			case "Anger Emoji":
 				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Anger").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.anger * 100f).AppendLine().AppendLine();
 				break;
-			case "ContemptEmoji":
+			case "Contempt Emoji":
 				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Contempt").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.contempt * 100f).AppendLine().AppendLine();
 				break;
-			case "FrowningEmoji":
+			case "Disgust Emoji":
 				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Disgust").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.disgust * 100f).AppendLine().AppendLine();
 				break;
-			case "NeutralEmoji":
+			case "Fear Emoji":
 				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
-				emotStr.AppendFormat("Emotion: Neutral").AppendLine();
-				emotStr.AppendFormat("Your score: {0:F0}%", es.neutral * 100f).AppendLine().AppendLine();
+				emotStr.AppendFormat("Emotion: Fear").AppendLine();
+				emotStr.AppendFormat("Your score: {0:F0}%", es.fear * 100f).AppendLine().AppendLine();
 				break;
-			case "SadCryingEmoji":
-				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
-				emotStr.AppendFormat("Emotion: Sadness").AppendLine();
-				emotStr.AppendFormat("Your score: {0:F0}%", es.sadness * 100f).AppendLine().AppendLine();
-				break;
-			case "SmileEmoji":
+			case "Happiness Emoji":
 				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Happiness").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.happiness * 100f).AppendLine().AppendLine();
 				break;
-			case "SurprisedEmoji":
+			case "Neutral Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("Emotion: Neutral").AppendLine();
+				emotStr.AppendFormat("Your score: {0:F0}%", es.neutral * 100f).AppendLine().AppendLine();
+				break;
+			case "Sadness Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("Emotion: Sadness").AppendLine();
+				emotStr.AppendFormat("Your score: {0:F0}%", es.sadness * 100f).AppendLine().AppendLine();
+				break;
+			case "Surprise Emoji":
 				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Surprise").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.surprise * 100f).AppendLine().AppendLine();

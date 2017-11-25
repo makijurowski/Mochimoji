@@ -14,20 +14,21 @@ public class PowerUpScript : MonoBehaviour
     public GameObject modalPanelObject;
     public WebcamSource cam;
 
-    // Audio triggers
-    // public AudioClip powerUpSound;
-    // private AudioSource source;
-
     private void Awake()
     {
-        // Get audio clip.
-        // source = GetComponent<AudioSource>();
-        cam.Awake();
+        try 
+        {
+            cam.Awake();
+        }
+        catch 
+        {
+            Debug.Log("No cam to awaken.");
+        }
     }
 
     public void Start()
     {
-        selectedEmoji = randomEmojis[UnityEngine.Random.Range(0, 7)];
+        selectedEmoji = randomEmojis[UnityEngine.Random.Range(0, 8)];
     }
 
     // If Player collides with PowerUp, then text will be triggered.
@@ -41,7 +42,6 @@ public class PowerUpScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Add audio when player collides with powerUp
-            // source.PlayOneShot(powerUpSound);
             modalPanelObject.SetActive(true);
             selectedEmoji = PowerUpScript.lastEmoji;
             cam.Play();

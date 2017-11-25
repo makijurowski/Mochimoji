@@ -5,18 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
-  - SurprisedEmoji
-  - FrowningEmoji
-  - SadCryingEmoji
-  - NeutralEmoji
-  - ContemptEmoji
-  - SmileEmoji
   - WebCam
-  - AngryEmoji
   - PowerUp
   - DPad
   - Audio
   - Text
+  - Anger Emoji
+  - Contempt Emoji
+  - Disgust Emoji
+  - Fear Emoji
+  - Happiness Emoji
+  - Neutral Emoji
+  - Sadness Emoji
+  - Surprise Emoji
   layers:
   - Default
   - TransparentFX
