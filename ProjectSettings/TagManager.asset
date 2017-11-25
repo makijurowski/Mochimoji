@@ -18,13 +18,6 @@ TagManager:
   - Neutral Emoji
   - Sadness Emoji
   - Surprise Emoji
-  - SadCryingEmoji
-  - FrowningEmoji
-  - AngryEmoji
-  - ContemptEmoji
-  - SmileEmoji
-  - SurprisedEmoji
-  - NeutralEmoji
   layers:
   - Default
   - TransparentFX
@@ -70,4 +63,7 @@ TagManager:
     locked: 0
   - name: GameOver
     uniqueID: 3779021187
+    locked: 0
+  - name: GameStart
+    uniqueID: 3880362683
     locked: 0

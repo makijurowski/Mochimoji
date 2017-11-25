@@ -167,7 +167,7 @@ PlayerSettings:
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
-  keepLoadedShadersAlive: 1
+  keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 1
   VertexChannelCompressionMask:
     serializedVersion: 2
@@ -250,7 +250,10 @@ PlayerSettings:
       m_Width: 128
       m_Height: 128
       m_Kind: 0
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 0
+    m_DynamicBatching: 0
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: MacStandaloneSupport
     m_APIs: 1000000011000000

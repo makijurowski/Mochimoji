@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour {
 
-    private InstructionPanel instructionPanel_bg;
+    private InstructionPanel instructionPanel;
 
     void Awake()
     {
-        instructionPanel_bg = InstructionPanel.Instance();
+        instructionPanel = InstructionPanel.Instance();
     }
 
     public void startGameButton()
@@ -20,11 +20,11 @@ public class GameStart : MonoBehaviour {
 
     public void loadInstructionPanel()
     {
-        instructionPanel_bg.ShowPanel();
+        instructionPanel.ShowPanel();
     }
 
     public void ClosePanel()
     {
-        instructionPanel_bg.ClosePanel();
+        instructionPanel.ClosePanel();
     }
 }
