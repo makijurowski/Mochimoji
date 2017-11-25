@@ -6,18 +6,17 @@ using UnityEngine.UI;
 public class CoinScript : MonoBehaviour {
     private int coinCount = 0;
     private string[] Lines;
-
     public Text scoreText;
-
-    // Audio triggers.
+    // Audio triggers
     public AudioClip coinSound;
     private AudioSource source;
 
 
     private void Awake()
     {
-        // Get audio clip.
+        // Get audio clip
         source = GetComponent<AudioSource>();
+        source.volume = 0.5f;
     }
 
     void Start()
@@ -37,25 +36,25 @@ public class CoinScript : MonoBehaviour {
             coinCount += 5;
             SetScoreText();
 
-            // Add audio when player collects coin.
+            // Add audio when player collects coin
             source.PlayOneShot(coinSound);
         }
     }
 
     void SetScoreText()
     {
-        // Check if there's already a current score existing (this will help with the power-up score).
+        // Check if there's already a current score existing
         if (PlayerPrefs.HasKey("Player Score"))
         {
             int currentCount = PlayerPrefs.GetInt("Player Score");
             coinCount += currentCount;
         }
         scoreText.text = "SCORE: " + coinCount.ToString();
-        // Save score to player preferences.
+        // Save score to player preferences
         PlayerPrefs.SetInt("Player Score", coinCount);
-        // Get logged user to use for highest score.
+        // Get logged user to use for highest score
         string loggedUser = PlayerPrefs.GetString("LoggedUser");
-        // Save highest score to player preferences.
+        // Save highest score to player preferences
         if (PlayerPrefs.HasKey("Highest Score"))
         {
             int highestScore = PlayerPrefs.GetInt("Highest Score");

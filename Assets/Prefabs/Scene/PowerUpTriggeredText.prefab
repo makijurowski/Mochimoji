@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpTriggeredText: {fileID: 114910183063493788}
-  powerUpStartTime: 5
+  powerUpStartTime: 6
 --- !u!114 &114910183063493788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,14 +101,14 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126742803018618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000015258789, y: 165.4, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalPosition: {x: 0, y: 310, z: 0}
+  m_LocalScale: {x: 1.0512497, y: 1.0512497, z: 1.0512497}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000095367, y: 165.4}
-  m_SizeDelta: {x: 490.5, y: 30}
+  m_AnchoredPosition: {x: 0, y: 310}
+  m_SizeDelta: {x: 590, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}

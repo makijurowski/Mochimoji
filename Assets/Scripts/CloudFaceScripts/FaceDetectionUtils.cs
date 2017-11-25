@@ -8,13 +8,13 @@ public static class FaceDetectionUtils
 	private static readonly Color[] faceColors = new Color[] { Color.green, Color.yellow, Color.cyan, Color.magenta, Color.red };
 	private static readonly string[] faceColorNames = new string[] { "Green", "Yellow", "Cyan", "Magenta", "Red", };
 	public static Scores currentScores;
-	public static string currentEmoji = CloudFaceDetector.EmojiNameOnCloudScript;
+	public static string currentEmoji;
 	public static Texture2D ImportImage()
 	{
 		Texture2D tex = null;
 
 		#if UNITY_EDITOR
-		string filePath = UnityEditor.EditorUtility.OpenFilePanel("Open image file", "", "jpg"); 
+		string filePath = UnityEditor.EditorUtility.OpenFilePanel("Open image file", "", "jpg");
 		#else
 		string filePath = string.Empty;
 		#endif
@@ -49,7 +49,7 @@ public static class FaceDetectionUtils
 		}
 
 		sbResult.Append(string.Format("This score was determined based on our detection of you as a {0:F0}-year-old {1} with approximately {2:F0}% smile.", face.faceAttributes.age, face.faceAttributes.gender, face.faceAttributes.smile * 100f)).AppendLine().AppendLine();
-		sbResult.Append(string.Format("Now please submit your score or try again by clicking on your image to take another picture.")).AppendLine().AppendLine();
+		sbResult.Append(string.Format("Now please submit your score or try again by clicking on your image to take another picture."));
 
 		return sbResult.ToString();
 	}
@@ -67,71 +67,73 @@ public static class FaceDetectionUtils
 		Scores es = emotion.scores;
 		currentScores = emotion.scores;
 		StringBuilder emotStr = new StringBuilder();
-
+		currentEmoji = CloudFaceDetector.EmojiNameOnCloudScript;
+		
 		switch (currentEmoji)
 		{
-			case "AngryEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
+			case "Anger Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Anger").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.anger * 100f).AppendLine().AppendLine();
 				break;
-			case "ContemptEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
+			case "Contempt Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Contempt").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.contempt * 100f).AppendLine().AppendLine();
 				break;
-			case "FrowningEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
+			case "Disgust Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Disgust").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.disgust * 100f).AppendLine().AppendLine();
 				break;
-			case "NeutralEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
-				emotStr.AppendFormat("Emotion: Neutral").AppendLine();
-				emotStr.AppendFormat("Your score: {0:F0}%", es.neutral * 100f).AppendLine().AppendLine();
+			case "Fear Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("Emotion: Fear").AppendLine();
+				emotStr.AppendFormat("Your score: {0:F0}%", es.fear * 100f).AppendLine().AppendLine();
 				break;
-			case "SadCryingEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
-				emotStr.AppendFormat("Emotion: Sadness").AppendLine();
-				emotStr.AppendFormat("Your score: {0:F0}%", es.sadness * 100f).AppendLine().AppendLine();
-				break;
-			case "SmileEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
+			case "Happiness Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Happiness").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.happiness * 100f).AppendLine().AppendLine();
 				break;
-			case "SurprisedEmoji":
-				emotStr.AppendFormat("Target Emoji: {0}", currentEmoji).AppendLine();
+			case "Neutral Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("Emotion: Neutral").AppendLine();
+				emotStr.AppendFormat("Your score: {0:F0}%", es.neutral * 100f).AppendLine().AppendLine();
+				break;
+			case "Sadness Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("Emotion: Sadness").AppendLine();
+				emotStr.AppendFormat("Your score: {0:F0}%", es.sadness * 100f).AppendLine().AppendLine();
+				break;
+			case "Surprise Emoji":
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Surprise").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.surprise * 100f).AppendLine().AppendLine();
 				break;
 		}
 
-		// if (es.anger >= 0.01f)
-		// 	emotStr.AppendFormat("  • Angry: {0:F0}%", es.anger * 100f).AppendLine();
-		// if (es.contempt >= 0.01f)
-		// // 	emotStr.AppendFormat("  • Contemptuous: {0:F0}%", es.contempt * 100f).AppendLine();
-		// if (es.disgust >= 0.01f)
-		// 	emotStr.AppendFormat("  • Disgusted: {0:F0}%", es.disgust * 100f).AppendLine();
-		// if (es.fear >= 0.01f)
-		// 	emotStr.AppendFormat("  • Scared: {0:F0}%", es.fear * 100f).AppendLine();
-		// if (es.happiness >= 0.01f)
-		// 	emotStr.AppendFormat("  • Happy: {0:F0}%", es.happiness * 100f).AppendLine();
-		// if (es.neutral >= 0.01f)
-		// 	emotStr.AppendFormat("  • Neutral: {0:F0}%", es.neutral * 100f).AppendLine();
-		// if (es.sadness >= 0.01f)
-		// 	emotStr.AppendFormat("  • Sadness: {0:F0}%", es.sadness * 100f).AppendLine();
-		// if (es.surprise >= 0.01f)
-		// 	emotStr.AppendFormat("  • Surprise: {0:F0}%", es.surprise * 100f);
-
-		//if(emotStr.Length > 0)
-		// {
-		// 	emotStr.Remove(0, 1);
-		// 	emotStr.Remove(emotStr.Length - 1, 1);
-		//}
+		// Log full scores to console
+		StringBuilder emotLog = new StringBuilder();
+		if (es.anger >= 0.01f)
+			emotLog.AppendFormat("  • Angry: {0:F0}%", es.anger * 100f).AppendLine();
+		if (es.contempt >= 0.01f)
+			emotLog.AppendFormat("  • Contemptuous: {0:F0}%", es.contempt * 100f).AppendLine();
+		if (es.disgust >= 0.01f)
+			emotLog.AppendFormat("  • Disgusted: {0:F0}%", es.disgust * 100f).AppendLine();
+		if (es.fear >= 0.01f)
+			emotLog.AppendFormat("  • Scared: {0:F0}%", es.fear * 100f).AppendLine();
+		if (es.happiness >= 0.01f)
+			emotLog.AppendFormat("  • Happy: {0:F0}%", es.happiness * 100f).AppendLine();
+		if (es.neutral >= 0.01f)
+			emotLog.AppendFormat("  • Neutral: {0:F0}%", es.neutral * 100f).AppendLine();
+		if (es.sadness >= 0.01f)
+			emotLog.AppendFormat("  • Sadness: {0:F0}%", es.sadness * 100f).AppendLine();
+		if (es.surprise >= 0.01f)
+			emotLog.AppendFormat("  • Surprise: {0:F0}%", es.surprise * 100f);
+		Debug.Log(emotLog);
 
 		string emotionScores = emotStr.ToString();
-		Debug.Log("detectionutils emotionScores: " + emotionScores);
 		return emotStr.ToString();
 	}
 

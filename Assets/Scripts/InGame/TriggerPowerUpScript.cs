@@ -35,32 +35,36 @@ public class TriggerPowerUpScript : MonoBehaviour {
 		StringBuilder emotStr = new StringBuilder();
 		switch(currentEmoji)
 		{
-			case "AngryEmoji":
-				emotStr.Append(string.Format("AngryEmoji & Anger Score: {0:F0}%", currentScores.anger * 100f)).AppendLine();
+			case "Anger Emoji":
+				emotStr.Append(string.Format("Anger Emoji & Anger Score: {0:F0}%", currentScores.anger * 100f)).AppendLine();
 				emotionScore = currentScores.anger;
 				break;
-			case "ContemptEmoji":
-				emotStr.Append(string.Format(" ContemptEmoji & Contempt Score: {0:F0}%", currentScores.contempt * 100f)).AppendLine();
+			case "Contempt Emoji":
+				emotStr.Append(string.Format(" Contempt Emoji & Contempt Score: {0:F0}%", currentScores.contempt * 100f)).AppendLine();
 				emotionScore = currentScores.contempt;
 				break;
-			case "FrowningEmoji":
-				emotStr.Append(string.Format(" FrowningEmoji & Disgust Score: {0:F0}%", currentScores.disgust * 100f)).AppendLine();
+			case "Disgust Emoji":
+				emotStr.Append(string.Format(" Disgust Emoji & Disgust Score: {0:F0}%", currentScores.disgust * 100f)).AppendLine();
 				emotionScore = currentScores.disgust;
 				break;
-			case "NeutralEmoji":
-				emotStr.Append(string.Format(" NeutralEmoji & Neutral Score: {0:F0}%", currentScores.neutral * 100f)).AppendLine();
-				emotionScore = currentScores.neutral;
+			case "Fear Emoji":
+				emotStr.Append(string.Format(" Fear Emoji & Fear Score: {0:F0}%", currentScores.fear * 100f)).AppendLine();
+				emotionScore = currentScores.disgust;
 				break;
-			case "SadCryingEmoji":
-				emotStr.Append(string.Format(" SadCryingEmoji & Sadness Score: {0:F0}%", currentScores.sadness * 100f)).AppendLine();
-				emotionScore = currentScores.sadness;
-				break;
-			case "SmileEmoji":
-				emotStr.Append(string.Format(" SmileEmoji & Happiness Score: {0:F0}%", currentScores.happiness * 100f)).AppendLine();
+			case "Happiness Emoji":
+				emotStr.Append(string.Format(" Happiness Emoji & Happiness Score: {0:F0}%", currentScores.happiness * 100f)).AppendLine();
 				emotionScore = currentScores.happiness;
 				break;
-			case "SurprisedEmoji":
-				emotStr.Append(string.Format(" SurprisedEmoji & Surprise Score: {0:F0}%", currentScores.surprise * 100f)).AppendLine();
+			case "Neutral Emoji":
+				emotStr.Append(string.Format(" Neutral Emoji & Neutral Score: {0:F0}%", currentScores.neutral * 100f)).AppendLine();
+				emotionScore = currentScores.neutral;
+				break;
+			case "Sadness Emoji":
+				emotStr.Append(string.Format(" Sadness Emoji & Sadness Score: {0:F0}%", currentScores.sadness * 100f)).AppendLine();
+				emotionScore = currentScores.sadness;
+				break;
+			case "Surprise Emoji":
+				emotStr.Append(string.Format(" Surprise Emoji & Surprise Score: {0:F0}%", currentScores.surprise * 100f)).AppendLine();
 				emotionScore = currentScores.surprise;
 				break;
 			default:
@@ -81,13 +85,10 @@ public class TriggerPowerUpScript : MonoBehaviour {
 		
 		// Current coins
 		coinCount = PlayerPrefs.GetInt("Player Score");
-		Debug.Log("CoinCount: " + coinCount);
 
 		// Calculate coin bonus
 		coinBonus = (20 + Mathf.RoundToInt(emotionScore * 50));
 		coinCount = coinCount + (UnityEngine.Random.Range(coinBonus - 10, coinBonus + 10));
-		Debug.Log("CoinCount Min: " + (coinBonus - 10));
-		Debug.Log("CoinCount Max: "+ (coinBonus + 10));
 
 		// Set score
 		PlayerPrefs.SetInt("Player Score", coinCount);

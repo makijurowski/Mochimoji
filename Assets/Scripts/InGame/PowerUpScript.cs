@@ -14,20 +14,21 @@ public class PowerUpScript : MonoBehaviour
     public GameObject modalPanelObject;
     public WebcamSource cam;
 
-    // Audio triggers
-    public AudioClip powerUpSound;
-    private AudioSource source;
-
     private void Awake()
     {
-        // Get audio clip.
-        source = GetComponent<AudioSource>();
-        cam.Awake();
+        try 
+        {
+            cam.Awake();
+        }
+        catch 
+        {
+            Debug.Log("No cam to awaken.");
+        }
     }
 
     public void Start()
     {
-        selectedEmoji = randomEmojis[UnityEngine.Random.Range(0, 7)];
+        selectedEmoji = randomEmojis[UnityEngine.Random.Range(0, 8)];
     }
 
     // If Player collides with PowerUp, then text will be triggered.
@@ -36,26 +37,30 @@ public class PowerUpScript : MonoBehaviour
         selectedEmoji.gameObject.SetActive(true);
         lastEmoji = selectedEmoji.gameObject;
         selectedEmojiName = selectedEmoji.gameObject.tag;
-        CloudFaceDetector.EmojiNameOnCloudScript = selectedEmojiName;
-        
+        CloudFaceDetector.EmojiNameOnCloudScript = selectedEmoji.gameObject.tag;
+
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Add audio when player collects coin.
-            source.PlayOneShot(powerUpSound);
-
+            // Add audio when player collides with powerUp
             modalPanelObject.SetActive(true);
-
             selectedEmoji = PowerUpScript.lastEmoji;
-
             cam.Play();
         }
     }
 
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        selectedEmoji.gameObject.SetActive(true);
+        lastEmoji = selectedEmoji.gameObject;
+        selectedEmojiName = selectedEmoji.gameObject.tag;
+        CloudFaceDetector.EmojiNameOnCloudScript = selectedEmoji.gameObject.tag;
+    }
 
-    // If Player moves away from Object, then text will disappear.
+    // If the player moves away from object, then the emoji disappears
     void OnTriggerExit2D(Collider2D collision)
     {
         selectedEmoji.gameObject.SetActive(false);
+        selectedEmojiName = "";
         modalPanelObject.SetActive(false);
     }
 }
