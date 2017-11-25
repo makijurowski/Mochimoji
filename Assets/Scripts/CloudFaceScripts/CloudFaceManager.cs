@@ -89,8 +89,6 @@ public class CloudFaceManager : MonoBehaviour
 		return emotServiceUrl;
 	}
 
-
-
 	/// <summary>
 	/// Detects the faces in the given image.
 	/// </summary>
@@ -104,7 +102,6 @@ public class CloudFaceManager : MonoBehaviour
 		byte[] imageBytes = texImage.EncodeToJPG();
 		return DetectFaces(imageBytes);
 	}
-	
 	
 	/// <summary>
 	/// Detects the faces in the given image.
@@ -143,7 +140,6 @@ public class CloudFaceManager : MonoBehaviour
 		return faces;
 	}
 
-
 	/// <summary>
 	/// Recognizes the emotions.
 	/// </summary>
@@ -158,7 +154,6 @@ public class CloudFaceManager : MonoBehaviour
 		byte[] imageBytes = texImage.EncodeToJPG();
 		return RecognizeEmotions(imageBytes, faceRects);
 	}
-
 
 	/// <summary>
 	/// Recognizes the emotions.
@@ -209,8 +204,7 @@ public class CloudFaceManager : MonoBehaviour
 		}
 
 		return emotions;
-	}
-	
+	}	
 	
 	/// <summary>
 	/// Matches the recognized emotions to faces.
@@ -243,8 +237,6 @@ public class CloudFaceManager : MonoBehaviour
 		return matched;
 	}
 	
-	
-
 	/// <summary>
 	/// Gets the standard face colors.
 	/// </summary>
@@ -253,7 +245,7 @@ public class CloudFaceManager : MonoBehaviour
 	{
 		Color[] faceColors = new Color[5];
 
-		faceColors[0] = Color.green;
+		faceColors[0] = Color.black;
 		faceColors[1] = Color.yellow;
 		faceColors[2] = Color.cyan;
 		faceColors[3] = Color.magenta;
@@ -261,7 +253,6 @@ public class CloudFaceManager : MonoBehaviour
 
 		return faceColors;
 	}
-
 
 	/// <summary>
 	/// Gets the standard face color names.
@@ -271,7 +262,7 @@ public class CloudFaceManager : MonoBehaviour
 	{
 		string[] faceColorNames = new string[5];
 
-		faceColorNames[0] = "Green";
+		faceColorNames[0] = "Black";
 		faceColorNames[1] = "Yellow";
 		faceColorNames[2] = "Cyan";
 		faceColorNames[3] = "Magenta";
@@ -410,7 +401,6 @@ public class CloudFaceManager : MonoBehaviour
 		return group;
 	}
 	
-	
 	/// <summary>
 	/// Lists the people in a person-group.
 	/// </summary>
@@ -446,7 +436,6 @@ public class CloudFaceManager : MonoBehaviour
 
 		return persons;
 	}
-	
 
 	/// <summary>
 	/// Adds the person to a group.
@@ -491,7 +480,6 @@ public class CloudFaceManager : MonoBehaviour
 		return person;
 	}
 	
-
 	/// <summary>
 	/// Gets the person data.
 	/// </summary>
@@ -526,7 +514,6 @@ public class CloudFaceManager : MonoBehaviour
 		return person;
 	}
 	
-	
 	/// <summary>
 	/// Adds the face to a person in a person-group.
 	/// </summary>
@@ -544,7 +531,6 @@ public class CloudFaceManager : MonoBehaviour
 		byte[] imageBytes = texImage.EncodeToJPG();
 		return AddFaceToPerson(groupId, personId, userData, faceRect, imageBytes);
 	}
-	
 	
 	/// <summary>
 	/// Adds the face to a person in a person-group.
@@ -584,7 +570,6 @@ public class CloudFaceManager : MonoBehaviour
 		return face;
 	}
 
-
 	/// <summary>
 	/// Updates the person's name or userData field.
 	/// </summary>
@@ -615,7 +600,6 @@ public class CloudFaceManager : MonoBehaviour
 		}
 	}
 	
-	
 	/// <summary>
 	/// Deletes existing person from a person group. Persisted face images of the person will also be deleted. 
 	/// </summary>
@@ -640,7 +624,6 @@ public class CloudFaceManager : MonoBehaviour
 			ProcessFaceError(response);
 		}
 	}
-	
 	
 	/// <summary>
 	/// Trains the person-group.
@@ -670,7 +653,6 @@ public class CloudFaceManager : MonoBehaviour
 		return true;
 	}
 	
-
 	/// <summary>
 	/// Determines whether the person-group's training is finished.
 	/// </summary>
@@ -683,7 +665,6 @@ public class CloudFaceManager : MonoBehaviour
 		
 		return bSuccess;
 	}
-
 
 	/// <summary>
 	/// Gets the person-group's training status.
@@ -718,7 +699,6 @@ public class CloudFaceManager : MonoBehaviour
 		return status;
 	}
 	
-
 	/// <summary>
 	/// Identifies the given faces.
 	/// </summary>
@@ -769,7 +749,6 @@ public class CloudFaceManager : MonoBehaviour
 		return results;
 	}
 	
-
 	/// <summary>
 	/// Matchs the identity candidates to faces.
 	/// </summary>
@@ -814,8 +793,6 @@ public class CloudFaceManager : MonoBehaviour
 		
 		return matched;
 	}
-	
-	
 	// --------------------------------------------------------------------------------- //
 	
 	// processes the error status in response
@@ -850,14 +827,4 @@ public class CloudFaceManager : MonoBehaviour
 			}
 		}
 	}
-	
-	
-//	private JsonSerializerSettings jsonSettings = new JsonSerializerSettings()
-//	{
-//		DateFormatHandling = DateFormatHandling.IsoDateFormat,
-//		NullValueHandling = NullValueHandling.Ignore,
-//		ContractResolver = new CamelCasePropertyNamesContractResolver()
-//	};
-
-
 }

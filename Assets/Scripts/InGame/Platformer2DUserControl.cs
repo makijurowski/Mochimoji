@@ -27,9 +27,7 @@ namespace UnityStandardAssets._2D
         {
             // Pass all parameters to the character control script.
             bool powerUp = TriggerPowerUpScript.powerUp;
-            float PowerSpeed = TriggerPowerUpScript.PowerSpeed;
             float h = CnInputManager.GetAxis("Horizontal");
-            bool blink = Input.GetKey(KeyCode.UpArrow);
             m_Character.Move(h, m_Jump, powerUp);
             m_Jump = false;
         }
