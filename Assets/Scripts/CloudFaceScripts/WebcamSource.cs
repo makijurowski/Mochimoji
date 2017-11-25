@@ -110,7 +110,7 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 			}
 		}
 
-		void Update()
+		public void Update()
 		{
 			if (!bTexResolutionSet && webcamTex != null && webcamTex.isPlaying)
 			{
@@ -120,7 +120,7 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 			}
 		}
 
-		void OnDisable()
+		public void OnDisable()
 		{
 			if (webcamTex)
 			{

@@ -25,10 +25,10 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
+            // Pass all parameters to the character control script.
             bool powerUp = TriggerPowerUpScript.powerUp;
             float PowerSpeed = TriggerPowerUpScript.PowerSpeed;
             float h = CnInputManager.GetAxis("Horizontal");
-            // Pass all parameters to the character control script.
             bool blink = Input.GetKey(KeyCode.UpArrow);
             m_Character.Move(h, m_Jump, powerUp);
             m_Jump = false;

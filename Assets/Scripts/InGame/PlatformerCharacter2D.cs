@@ -44,7 +44,7 @@ namespace UnityStandardAssets._2D
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+            // This can be done using layers instead but Sample Assets will not overwrite your project settings
             Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -70,7 +70,7 @@ namespace UnityStandardAssets._2D
                 // Increase the speed if player has used powerUp
                 move = (powerUp ? move * (PowerSpeed) : move);
 
-                // The Speed animator parameter is set to the absolute value of the horizontal input.
+                // The Speed animator parameter is set to the absolute value of the horizontal input
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
@@ -95,7 +95,7 @@ namespace UnityStandardAssets._2D
                 // Add audio to player jump
                 source.PlayOneShot(jumpSound);
 
-                // Add a vertical force to the player.
+                // Add a vertical force to the player
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
@@ -126,10 +126,10 @@ namespace UnityStandardAssets._2D
 
         private void Flip()
         {
-            // Switch the way the player is labelled as facing.
+            // Switch the way the player is labelled as facing
             m_FacingRight = !m_FacingRight;
 
-            // Multiply the player's x local scale by -1.
+            // Multiply the player's x local scale by -1
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
