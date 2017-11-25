@@ -9,7 +9,6 @@ public class TimerText : MonoBehaviour
 
     public Text timerText;
     public float StartTime;
-    //public bool finish = false;
 
     void Start()
     {
@@ -38,7 +37,6 @@ public class TimerText : MonoBehaviour
     // Once timer hits 0:00:00, load Game Over scene.
     public void FinishTimer()
     {
-        //finish = true;
         timerText.color = Color.yellow;
         SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
     }

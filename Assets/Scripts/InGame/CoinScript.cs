@@ -22,20 +22,11 @@ public class CoinScript : MonoBehaviour {
 
     void Start()
     {
-        if((scoreText.text).Length == 0)
+        if((scoreText.text).Length == 6)
         {
-            scoreText.text = "SCORE: " + coinCount.ToString();
             PlayerPrefs.SetInt("Player Score", 0);
+            scoreText.text = "SCORE: " + coinCount.ToString();
         }
-        // if (PlayerPrefs.HasKey("Player Score") && PlayerPrefs.GetInt("Player Score") > 0)
-        // {
-        //     coinCount = PlayerPrefs.GetInt("Player Score");
-        // }
-        // else
-        // {
-        //     coinCount = 0;
-        // }
-        // SetScoreText();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +35,6 @@ public class CoinScript : MonoBehaviour {
         {
             collision.gameObject.SetActive(false);
             coinCount += 5;
-            Debug.Log("Add 5 coins");
             SetScoreText();
 
             // Add audio when player collects coin.
@@ -58,8 +48,6 @@ public class CoinScript : MonoBehaviour {
         if (PlayerPrefs.HasKey("Player Score"))
         {
             int currentCount = PlayerPrefs.GetInt("Player Score");
-            Debug.Log("coinCount " + coinCount);
-            Debug.Log("currentCount " + currentCount);
             coinCount += currentCount;
         }
         scoreText.text = "SCORE: " + coinCount.ToString();
