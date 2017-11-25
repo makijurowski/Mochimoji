@@ -86,3 +86,7 @@ my-label-pkg.json
 *.pdf
 
 *.pdf.*
+
+*.txt
+
+*.txt.*
