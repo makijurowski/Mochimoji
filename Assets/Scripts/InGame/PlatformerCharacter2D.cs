@@ -8,25 +8,23 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
-        [SerializeField] private float m_MaxSpeed = 8f; // The fastest the player can travel in the x axis.
-        [SerializeField] private float m_JumpForce = 800f; // Amount of force added when the player jumps.
+        [SerializeField] private float m_MaxSpeed = 8f;         // The fastest the player can travel in the x axis
+        [SerializeField] private float m_JumpForce = 800f;      // Amount of force added when the player jumps
         // Add powerUp
-        [Range(1, 2)] public float PowerSpeed = 1.2f;
-        [SerializeField] public bool powerUp;
-        [SerializeField] private bool m_AirControl = false; // Whether or not a player can steer while jumping;
-        [SerializeField] private LayerMask m_WhatIsGround; // A mask determining what is ground to the character
+        [SerializeField] public bool powerUp;                   // If power-up is active (true) or not (false)
+        [Range(1, 2)] public float PowerSpeed = 1.2f;           // Multiplier to max speed during power-up
+        [SerializeField] private bool m_AirControl = false;     // Whether or not a player can steer while jumping
+        [SerializeField] private LayerMask m_WhatIsGround;      // A mask determining what is ground to the character
 
-        private Transform m_GroundCheck; // A position marking where to check if the player is grounded.
-        const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-        private bool m_Grounded; // Whether or not the player is grounded.
-        private Animator m_Anim; // Reference to the player's animator component.
+        private Transform m_GroundCheck;                        // A position marking where to check if the player is grounded
+        const float k_GroundedRadius = .2f;                     // Radius of the overlap circle to determine if grounded
+        private bool m_Grounded;                                // Whether or not the player is grounded
+        private Animator m_Anim;                                // Reference to the player's animator component
         private Rigidbody2D m_Rigidbody2D;
-        private bool m_FacingRight = true; // For determining which way the player is currently facing.
-        // Add double-jump
-        bool m_DoubleJump = false;
-        // Add audio
-        public AudioClip jumpSound;
-        private AudioSource source;
+        private bool m_FacingRight = true;                      // For determining which way the player is currently facing
+        bool m_DoubleJump = false;                              // Add double-jump
+        public AudioClip jumpSound;                             // Add audio
+        private AudioSource source;                             // Set audio source
 
         private void Awake()
         {
@@ -66,7 +64,7 @@ namespace UnityStandardAssets._2D
 
         public void Move(float move, bool jump, bool powerUp)
         {
-            //only control the player if grounded or airControl is turned on
+            // Only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl)
             {
                 // Increase the speed if player has used powerUp
@@ -81,13 +79,13 @@ namespace UnityStandardAssets._2D
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
                 {
-                    // ... flip the player.
+                    // ...flip the player.
                     Flip();
                 }
                 // Otherwise if the input is moving the player left and the player is facing right...
                 else if (move < 0 && m_FacingRight)
                 {
-                    // ... flip the player.
+                    // ...flip the player.
                     Flip();
                 }
             }

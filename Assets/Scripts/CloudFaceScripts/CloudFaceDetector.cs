@@ -39,25 +39,15 @@ public class CloudFaceDetector : MonoBehaviour
         }
 
 		hasCamera = imageSource != null && imageSource.HasCamera();
-        //if(PowerUpScript.lastEmoji)
-        //{
-        //    hintMessage = hasCamera ? "Click on the camera image to take a picture. \nTry to match your face to " + EmojiNameOnCloudScript + "!" : "No camera found";
-        //    SetHintText(hintMessage);
-        //}
-        //else
-        //{
-        //    hintMessage = hasCamera ? "Click on the camera image to take a picture. \nTry to match your face to the current emoji!" : "No camera found";
-        //    SetHintText(hintMessage);
-        //}
     }
 
-    private void Update()
+    public void Update()
     {
-        hintMessage = hasCamera ? "Click on the camera image to take a picture. \nTry to match your face to " + EmojiNameOnCloudScript + "!" : "No camera found";
+        hintMessage = hasCamera ? "Click on the camera image to take a picture.\nTry to match your face to " + EmojiNameOnCloudScript + "!" : "No camera found";
         SetHintText(hintMessage);
     }
 
-    // camera panel onclick event handler
+    // Camera panel on-click event handler
     public void OnCameraClick()
     {
         hintText.gameObject.SetActive(false);
@@ -71,7 +61,7 @@ public class CloudFaceDetector : MonoBehaviour
         }        
     }
 
-    // camera-shot panel onclick event handler
+    // Camera-shot panel on-click event handler
     public void OnShotClick()
     {
         if (DoImageImport())
@@ -129,7 +119,6 @@ public class CloudFaceDetector : MonoBehaviour
 			byte[] imageBytes = texCamShot.EncodeToJPG();
 			yield return null;
 
-			//faces = faceManager.DetectFaces(texCamShot);
 			AsyncTask<Face[]> taskFace = new AsyncTask<Face[]>(() => {
 				return faceManager.DetectFaces(imageBytes);
 			});
@@ -148,7 +137,7 @@ public class CloudFaceDetector : MonoBehaviour
 
 				if(faces != null && faces.Length > 0)
 				{
-					// stick to detected face rectangles
+					// Stick to detected face rectangles
 					FaceRectangle[] faceRects = new FaceRectangle[faces.Length];
 
 					for(int i = 0; i < faces.Length; i++)
@@ -158,10 +147,10 @@ public class CloudFaceDetector : MonoBehaviour
 
 					yield return null;
 
-					// get the emotions of the faces
+					// Get facial emotions
 					if(recognizeEmotions)
 					{
-						//Emotion[] emotions = faceManager.RecognizeEmotions(texCamShot, faceRects);
+						// Emotion[] emotions = faceManager.RecognizeEmotions(texCamShot, faceRects);
 						AsyncTask<Emotion[]> taskEmot = new AsyncTask<Emotion[]>(() => {
 							return faceManager.RecognizeEmotions(imageBytes, faceRects);
 						});
@@ -177,7 +166,6 @@ public class CloudFaceDetector : MonoBehaviour
 						if(string.IsNullOrEmpty(taskEmot.ErrorMessage))
 						{
 							Emotion[] emotions = taskEmot.Result;
-                            // emotions2 = taskEmot.Result;
 							int matched = faceManager.MatchEmotionsToFaces(ref faces, ref emotions);
 
 							if(matched != faces.Length)
@@ -192,7 +180,6 @@ public class CloudFaceDetector : MonoBehaviour
 					}
 
 					CloudFaceManager.DrawFaceRects(texCamShot, faces, FaceDetectionUtils.FaceColors);
-					//SetHintText("Click on the camera image to take a picture.");
 					SetHintText(hintMessage);
 					SetResultText(faces);
 				}
@@ -231,7 +218,7 @@ public class CloudFaceDetector : MonoBehaviour
 
         if (faces != null && faces.Length > 0)
         {
-            for (int i = 0; i < faces.Length; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Face face = faces[i];
                 string faceColorName = FaceDetectionUtils.FaceColorNames[i % FaceDetectionUtils.FaceColors.Length];

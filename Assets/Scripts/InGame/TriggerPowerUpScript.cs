@@ -29,7 +29,6 @@ public class TriggerPowerUpScript : MonoBehaviour {
 
 		// Identify currentEmoji & currentScores
         currentEmoji = PowerUpScript.selectedEmojiName;
-		Debug.Log("currentEmoji from TriggerPowerUpScript: " + currentEmoji);
 		currentScores = FaceDetectionUtils.currentScores;
 
 		// Determine player score for current emoji
@@ -72,34 +71,27 @@ public class TriggerPowerUpScript : MonoBehaviour {
 		// De-activate currentEmoji
 		PowerUpScript.lastEmoji.transform.parent.Find("PowerUp").gameObject.SetActive(false);
 
-		// TODO remove debug statements
-		Debug.Log("********************");
-		Debug.Log("********************");
-
 		// Current emoji & emotion scores
-		Debug.Log("currentEmoji: " + currentEmoji);
+		Debug.Log("CurrentEmoji: " + currentEmoji);
 		Debug.Log("EmotionScores: " + emotStr);
 
 		// Add Speed Boost
 		PowerSpeed = ((emotionScore/2f) + 1.2f);
-		Debug.Log("Power Speed Boost: " + (PowerSpeed) + " and Power Speed: " + (PowerSpeed * 8f));
+		Debug.Log("PowerSpeed Multiplier: " + (PowerSpeed) + " / PowerSpeed: " + (PowerSpeed * 8f));
 		
 		// Current coins
 		coinCount = PlayerPrefs.GetInt("Player Score");
-		Debug.Log("Current coin count: " + coinCount);
+		Debug.Log("CoinCount: " + coinCount);
 
 		// Calculate coin bonus
 		coinBonus = (20 + Mathf.RoundToInt(emotionScore * 50));
 		coinCount = coinCount + (UnityEngine.Random.Range(coinBonus - 10, coinBonus + 10));
-		Debug.Log("coinCount Min: " + (coinBonus - 10));
-		Debug.Log("coinCount Max: "+ (coinBonus + 10));
+		Debug.Log("CoinCount Min: " + (coinBonus - 10));
+		Debug.Log("CoinCount Max: "+ (coinBonus + 10));
 
 		// Set score
 		PlayerPrefs.SetInt("Player Score", coinCount);
 		scoreText.text = "SCORE: " + coinCount.ToString();
-		Debug.Log("coinCount Actual: " + coinCount);
-		Debug.Log("********************");
-		Debug.Log("********************");
 		
 		// Reset coinCount
 		coinCount = 0;

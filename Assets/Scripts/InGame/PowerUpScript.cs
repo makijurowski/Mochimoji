@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PowerUpScript : MonoBehaviour
 {
-    // public Text triggeredText;
     public GameObject[] randomEmojis;
     public GameObject selectedEmoji;
     public static GameObject lastEmoji;
@@ -15,7 +14,7 @@ public class PowerUpScript : MonoBehaviour
     public GameObject modalPanelObject;
     public WebcamSource cam;
 
-    // Audio triggers.
+    // Audio triggers
     public AudioClip powerUpSound;
     private AudioSource source;
 
@@ -23,7 +22,7 @@ public class PowerUpScript : MonoBehaviour
     {
         // Get audio clip.
         source = GetComponent<AudioSource>();
-        cam.Play();
+        cam.Awake();
     }
 
     public void Start()
@@ -56,8 +55,6 @@ public class PowerUpScript : MonoBehaviour
     // If Player moves away from Object, then text will disappear.
     void OnTriggerExit2D(Collider2D collision)
     {
-        // triggeredText.gameObject.SetActive(false);
-        // selectedEmojiName = lastEmoji.gameObject.tag;
         selectedEmoji.gameObject.SetActive(false);
         modalPanelObject.SetActive(false);
     }
