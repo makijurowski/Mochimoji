@@ -70,6 +70,5 @@ public class PowerUpScript : MonoBehaviour
         selectedEmoji.gameObject.SetActive(false);
         selectedEmojiName = "";
         modalPanelObject.SetActive(false);
-        cam.OnDisable();
     }
 }

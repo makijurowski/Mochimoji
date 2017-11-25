@@ -6,7 +6,7 @@ public class BringModalToFront : MonoBehaviour {
 
     private void OnEnable()
     {
-        // make this the last hierarchi of its layer
+        // Make this the last object in the hierarchy of its layer
         transform.SetAsLastSibling();
     }
 }

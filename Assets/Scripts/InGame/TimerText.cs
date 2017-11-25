@@ -24,20 +24,20 @@ public class TimerText : MonoBehaviour
         if (StartTime <= 0.000f)
         {
             seconds = "00";
-            timerText.text = "TIMER: " + minutes + ":" + seconds;
+            timerText.text = "TIMER:  " + minutes + ":" + seconds;
             FinishTimer();
             return;
         }
         else
         {
-            timerText.text = "TIMER: " + minutes + ":" + seconds;
+            timerText.text = "TIMER:  " + minutes + ":" + seconds;
         }
     }
 
     // Once timer hits 0:00:00, load Game Over scene.
     public void FinishTimer()
     {
-        timerText.color = Color.yellow;
+        timerText.color = Color.red;
         SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
     }
 }

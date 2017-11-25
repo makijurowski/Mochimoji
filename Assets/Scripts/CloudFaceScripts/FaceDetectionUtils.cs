@@ -5,8 +5,8 @@ using UnityEngine;
 
 public static class FaceDetectionUtils
 {
-	private static readonly Color[] faceColors = new Color[] { Color.green, Color.yellow, Color.cyan, Color.magenta, Color.red };
-	private static readonly string[] faceColorNames = new string[] { "Green", "Yellow", "Cyan", "Magenta", "Red", };
+	private static readonly Color[] faceColors = new Color[] { Color.black, Color.yellow, Color.cyan, Color.magenta, Color.red };
+	private static readonly string[] faceColorNames = new string[] { "Black", "Yellow", "Cyan", "Magenta", "Red", };
 	public static Scores currentScores;
 	public static string currentEmoji;
 	public static Texture2D ImportImage()
@@ -134,6 +134,7 @@ public static class FaceDetectionUtils
 		Debug.Log(emotLog);
 
 		string emotionScores = emotStr.ToString();
+		Debug.Log(emotionScores);
 		return emotStr.ToString();
 	}
 
@@ -169,7 +170,6 @@ public static class FaceDetectionUtils
 
 		return alScores;
 	}
-
 	public static Color[] FaceColors { get { return faceColors; } }
 	public static string[] FaceColorNames { get { return faceColorNames; } }
 }

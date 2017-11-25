@@ -7,7 +7,6 @@ public class CoinScript : MonoBehaviour {
     private int coinCount = 0;
     private string[] Lines;
     public Text scoreText;
-    // Audio triggers
     public AudioClip coinSound;
     private AudioSource source;
 
@@ -16,15 +15,15 @@ public class CoinScript : MonoBehaviour {
     {
         // Get audio clip
         source = GetComponent<AudioSource>();
-        source.volume = 0.5f;
+        source.volume = 0.2f;
     }
 
     void Start()
     {
-        if((scoreText.text).Length == 6)
+        if((scoreText.text).Length == 8)
         {
             PlayerPrefs.SetInt("Player Score", 0);
-            scoreText.text = "SCORE: " + coinCount.ToString();
+            scoreText.text = "SCORE:  " + coinCount.ToString();
         }
     }
 
@@ -49,7 +48,7 @@ public class CoinScript : MonoBehaviour {
             int currentCount = PlayerPrefs.GetInt("Player Score");
             coinCount += currentCount;
         }
-        scoreText.text = "SCORE: " + coinCount.ToString();
+        scoreText.text = "SCORE:  " + coinCount.ToString();
         // Save score to player preferences
         PlayerPrefs.SetInt("Player Score", coinCount);
         // Get logged user to use for highest score

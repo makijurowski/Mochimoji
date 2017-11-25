@@ -66,7 +66,6 @@ namespace UnityStandardAssets.Utility
             Reset();
         }
 
-
         // reset the object to sensible values
         public void Reset()
         {
@@ -121,7 +120,6 @@ namespace UnityStandardAssets.Utility
                     progressNum = (progressNum + 1)%circuit.Waypoints.Length;
                 }
 
-
                 target.position = circuit.Waypoints[progressNum].position;
                 target.rotation = circuit.Waypoints[progressNum].rotation;
 
@@ -135,7 +133,6 @@ namespace UnityStandardAssets.Utility
                 lastPosition = transform.position;
             }
         }
-
 
         private void OnDrawGizmos()
         {

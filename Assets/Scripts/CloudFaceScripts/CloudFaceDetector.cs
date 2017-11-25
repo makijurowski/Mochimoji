@@ -19,14 +19,14 @@ public class CloudFaceDetector : MonoBehaviour
     [Tooltip("Text component used for displaying hints and status messages.")]
     public Text hintText;
 
+    // Initial hint message
+    public string hintMessage;
+
     [Tooltip("Text component used to display face-detection results.")]
     public Text resultText;
 
     // Whether webcamSource has been set or there is web camera at all
     private bool hasCamera = false;
-
-    // Initial hint message
-    public string hintMessage;
 
     // AspectRatioFitter component;
     private AspectRatioFitter ratioFitter;

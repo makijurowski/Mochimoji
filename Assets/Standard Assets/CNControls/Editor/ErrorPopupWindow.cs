@@ -23,7 +23,7 @@ namespace CnControls
             if (GUILayout.Button("Create now!"))
             {
                 EditorApplication.isPlaying = false;
-
+                
                 EditorApplication.playmodeStateChanged += OnPlaymodeChanged;
             }
 
