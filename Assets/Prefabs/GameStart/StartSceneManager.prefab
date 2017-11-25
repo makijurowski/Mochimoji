@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4870530161651194}
   - component: {fileID: 114526819554982678}
   - component: {fileID: 114732619315735040}
-  m_Layer: 0
-  m_Name: Manager
+  m_Layer: 5
+  m_Name: StartSceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743965435086222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.365295, y: -8.664993, z: 0}
+  m_LocalPosition: {x: -20, y: -9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
