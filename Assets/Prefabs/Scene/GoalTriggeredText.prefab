@@ -9,65 +9,38 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1126742803018618}
+  m_RootGameObject: {fileID: 1724525321565634}
   m_IsPrefabParent: 1
---- !u!1 &1126742803018618
+--- !u!1 &1724525321565634
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224142887358933036}
-  - component: {fileID: 222790532491109304}
-  - component: {fileID: 114910183063493788}
-  - component: {fileID: 114811044117351522}
-  - component: {fileID: 114107558693492922}
+  - component: {fileID: 224449542217103740}
+  - component: {fileID: 222069032751794556}
+  - component: {fileID: 114415396405530316}
   m_Layer: 5
-  m_Name: PowerUpTriggeredText
+  m_Name: GoalTriggeredText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &114107558693492922
+--- !u!114 &114415396405530316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126742803018618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53066f0797f3f42a4943dc5aefb11c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
---- !u!114 &114811044117351522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126742803018618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36348aebb6b294f6b8950365803baa2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpTriggeredText: {fileID: 114910183063493788}
-  powerUpStartTime: 6
---- !u!114 &114910183063493788
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126742803018618}
+  m_GameObject: {fileID: 1724525321565634}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7058824, g: 0.019607853, b: 0.019607853, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -76,39 +49,39 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 16
+    m_FontStyle: 3
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 7
+    m_MinSize: 1
+    m_MaxSize: 18
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
---- !u!222 &222790532491109304
+  m_Text: Press X to end the game!
+--- !u!222 &222069032751794556
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126742803018618}
---- !u!224 &224142887358933036
+  m_GameObject: {fileID: 1724525321565634}
+--- !u!224 &224449542217103740
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1126742803018618}
+  m_GameObject: {fileID: 1724525321565634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 310, z: 0}
-  m_LocalScale: {x: 1.0512497, y: 1.0512497, z: 1.0512497}
+  m_LocalPosition: {x: -162.09, y: -100.77, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 310}
-  m_SizeDelta: {x: 590, y: 70}
+  m_AnchoredPosition: {x: -162.09, y: -100.77}
+  m_SizeDelta: {x: 179.23, y: 31.67}
   m_Pivot: {x: 0.5, y: 0.5}
