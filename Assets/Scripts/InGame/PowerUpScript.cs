@@ -44,7 +44,15 @@ public class PowerUpScript : MonoBehaviour
             // Add audio when player collides with powerUp
             modalPanelObject.SetActive(true);
             selectedEmoji = PowerUpScript.lastEmoji;
-            cam.Play();
+            try
+            {
+                cam.Play();
+                cam.GetImage();
+            }
+            catch
+            {
+                Debug.Log("No cam to play.");
+            }
         }
     }
 
@@ -62,5 +70,6 @@ public class PowerUpScript : MonoBehaviour
         selectedEmoji.gameObject.SetActive(false);
         selectedEmojiName = "";
         modalPanelObject.SetActive(false);
+        cam.OnDisable();
     }
 }

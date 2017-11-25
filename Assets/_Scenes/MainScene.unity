@@ -20242,6 +20242,16 @@ Prefab:
       propertyPath: randomEmojis.Array.data[7]
       value: 
       objectReference: {fileID: 1781550044}
+    - target: {fileID: 114009547929919710, guid: 450f2ffd427f4124cbf33ef2375cba49,
+        type: 2}
+      propertyPath: modalPanelObject
+      value: 
+      objectReference: {fileID: 2122750427}
+    - target: {fileID: 114009547929919710, guid: 450f2ffd427f4124cbf33ef2375cba49,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1910581421}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 450f2ffd427f4124cbf33ef2375cba49, type: 2}
   m_IsPrefabParent: 0
