@@ -43,18 +43,4 @@ public class GameOverScript : MonoBehaviour
             highestScoreText.text = highestScore.ToString();
         }
     }
-
-
-    // Create GUI buttons for PLAY AGAIN and LOGOUT.
-    //void OnGUI()
-    //{
-    //    if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 6 * 5, 100, 40), "PLAY AGAIN"))
-    //    {
-    //        SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
-    //    }
-    //    if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 10 * 9, 100, 40), "LOGOUT"))
-    //    {
-    //        SceneManager.LoadSceneAsync("LoginRegisterScene", LoadSceneMode.Single);
-    //    }
-    //}
 }

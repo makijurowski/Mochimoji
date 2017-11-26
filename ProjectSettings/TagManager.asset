@@ -18,6 +18,7 @@ TagManager:
   - Neutral Emoji
   - Sadness Emoji
   - Surprise Emoji
+  - Panel
   layers:
   - Default
   - TransparentFX
