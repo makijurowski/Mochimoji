@@ -7,18 +7,25 @@ using UnityEngine.UI;
 public class PowerUpTriggeredText : MonoBehaviour
 {
     public static bool powerUp;
-    public Text powerUpTriggeredText;
     public float powerUpStartTime;
+    public Text powerUpTriggeredText;
+    public GameObject powerUpBackgroundPanel;
+    public GameObject powerUpImage;
 
     public void Start()
     {
         powerUp = TriggerPowerUpScript.powerUp;
+        powerUpImage.gameObject.SetActive(true);
+        powerUpBackgroundPanel.gameObject.SetActive(true);
+        powerUpTriggeredText.gameObject.SetActive(true);
         powerUpStartTime = 6.0f;
     }
 
     public void New()
     {
         powerUp = TriggerPowerUpScript.powerUp;
+        powerUpImage.gameObject.SetActive(true);
+        powerUpBackgroundPanel.gameObject.SetActive(true);
         powerUpTriggeredText.gameObject.SetActive(true);
         powerUpStartTime = 6.0f;
     }
@@ -46,6 +53,8 @@ public class PowerUpTriggeredText : MonoBehaviour
     public void FinishTimer()
     {
         TriggerPowerUpScript.powerUp = false;
+        powerUpImage.gameObject.SetActive(false);
+        powerUpBackgroundPanel.gameObject.SetActive(false);
         powerUpTriggeredText.gameObject.SetActive(false);
         Debug.Log("PowerUp deactivated");
     }

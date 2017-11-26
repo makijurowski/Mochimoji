@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameStart : MonoBehaviour {
+public class GameStart : MonoBehaviour
+{
 
     private InstructionPanel instructionPanel;
 
@@ -17,7 +18,10 @@ public class GameStart : MonoBehaviour {
     private void Awake()
     {
         instructionPanel = InstructionPanel.Instance();
-        source = GetComponent<AudioSource>();
+    }
+
+    public void Start()
+    {
     }
 
     public void startGameButton()
@@ -32,7 +36,8 @@ public class GameStart : MonoBehaviour {
 
     public void ClosePanel()
     {
-        instructionPanel.ClosePanel();
+        source = GetComponent<AudioSource>();
         source.PlayOneShot(closePanelSound);
+        instructionPanel.ClosePanel();
     }
 }
