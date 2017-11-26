@@ -8,7 +8,6 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 {
 	[Tooltip("Whether the web-camera output needs to be flipped horizontally or not.")]
 	public bool flipHorizontally = false;
-
 	[Tooltip("Selected web-camera name, if any.")]
 	public string webcamName;
 	private WebCamTexture webcamTex; 					// The web-camera texture

@@ -16,11 +16,11 @@ public class CloudFaceDetector : MonoBehaviour
     [Tooltip("Whether to recognize the emotions of the detected faces, or not.")]
     public bool recognizeEmotions = false;
 
-    [Tooltip("Text component used for displaying hints and status messages.")]
-    public Text hintText;
-
     // Initial hint message
     public string hintMessage;
+
+    [Tooltip("Text component used for displaying hints and status messages.")]
+    public Text hintText;
 
     [Tooltip("Text component used to display face-detection results.")]
     public Text resultText;
@@ -55,7 +55,7 @@ public class CloudFaceDetector : MonoBehaviour
 
     public void Update()
     {
-        hintMessage = hasCamera ? "Match your face to " + EmojiNameOnCloudScript + " and click on the image to take a picture!" : "No camera found";
+        hintMessage = hasCamera ? "Match your face to the " + EmojiNameOnCloudScript + " and take a picture!" : "No camera found...";
         SetHintText(hintMessage);
     }
 

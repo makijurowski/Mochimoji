@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Collections;
 
-//  This script will be updated in Part 2 of this 2 part series.
 public class CamModalPanel : MonoBehaviour
 {
     public GameObject modalPanelObject;
@@ -22,8 +21,13 @@ public class CamModalPanel : MonoBehaviour
         return modalPanel;
     }
 
-    void ClosePanel()
+    public void ClosePanel()
     {
         modalPanelObject.SetActive(false);
     }
+
+    // public static void StaticClosePanel()
+    // {
+    //     CamModalPanel.modalPanel.gameObject.SetActive(false);
+    // }
 }

@@ -72,7 +72,7 @@ public static class FaceDetectionUtils
 		switch (currentEmoji)
 		{
 			case "Anger Emoji":
-				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("<b>Emoji</b>: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Anger").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.anger * 100f).AppendLine().AppendLine();
 				break;
