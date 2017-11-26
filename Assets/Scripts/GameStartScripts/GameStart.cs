@@ -38,6 +38,13 @@ public class GameStart : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         source.PlayOneShot(closePanelSound);
-        instructionPanel.ClosePanel();
+        try
+        {
+            instructionPanel.ClosePanel();
+        }
+        catch 
+        {
+            Debug.Log("No instruction panel to close.");
+        }
     }
 }
