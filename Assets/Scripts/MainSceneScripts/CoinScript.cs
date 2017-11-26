@@ -10,7 +10,6 @@ public class CoinScript : MonoBehaviour {
     public AudioClip coinSound;
     private AudioSource source;
 
-
     private void Awake()
     {
         // Get audio clip
@@ -20,6 +19,7 @@ public class CoinScript : MonoBehaviour {
 
     void Start()
     {
+        // If new game, reset player score to 0
         if((scoreText.text).Length == 8)
         {
             PlayerPrefs.SetInt("Player Score", 0);
