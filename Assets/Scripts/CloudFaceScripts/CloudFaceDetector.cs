@@ -55,7 +55,7 @@ public class CloudFaceDetector : MonoBehaviour
 
     public void Update()
     {
-        hintMessage = hasCamera ? "Click on the camera image to take a picture.\nTry to match your face to " + EmojiNameOnCloudScript + "!" : "No camera found";
+        hintMessage = hasCamera ? "Match your face to " + EmojiNameOnCloudScript + " and click on the image to take a picture!" : "No camera found";
         SetHintText(hintMessage);
     }
 

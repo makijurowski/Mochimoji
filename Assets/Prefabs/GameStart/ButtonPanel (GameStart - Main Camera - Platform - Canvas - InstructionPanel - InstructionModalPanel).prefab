@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 222206248460638014}
   - component: {fileID: 114415860676076646}
   m_Layer: 5
-  m_Name: ButtonPanel ((GameStart - Main Camera - Platform - Canvas - InstructionPanel
+  m_Name: ButtonPanel (GameStart - Main Camera - Platform - Canvas - InstructionPanel
     - InstructionModalPanel)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

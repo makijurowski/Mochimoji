@@ -39,13 +39,13 @@ public class PowerUpTriggeredText : MonoBehaviour
         if (powerUpStartTime <= 0.000f)
         {
             pu_seconds = "00";
-            powerUpTriggeredText.text = "Power-Up Time Remaining: " + pu_minutes + ":" + pu_seconds;
+            powerUpTriggeredText.text = "Power Up Time Left: " + pu_minutes + ":" + pu_seconds;
             FinishTimer();
             return;
         }
         else
         {
-            powerUpTriggeredText.text = "Power-Up Time Remaining: " + pu_minutes + ":" + pu_seconds;
+            powerUpTriggeredText.text = "Power Up Time Left: " + pu_minutes + ":" + pu_seconds;
         }
     }
 

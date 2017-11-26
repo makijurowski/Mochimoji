@@ -48,8 +48,8 @@ public static class FaceDetectionUtils
 			currentScores = face.emotion.scores;
 		}
 
-		sbResult.Append(string.Format("This score was determined based on our detection of you as a {0:F0}-year-old {1} with approximately {2:F0}% smile.", face.faceAttributes.age, face.faceAttributes.gender, face.faceAttributes.smile * 100f)).AppendLine().AppendLine();
-		sbResult.Append(string.Format("Now please submit your score or try again by clicking on your image to take another picture."));
+		sbResult.Append(string.Format("This score was determined based on our detection of you as a {0:F0}-year-old {1} with approximately {2:F0}% smile.", face.faceAttributes.age, face.faceAttributes.gender, face.faceAttributes.smile * 100f)).AppendLine();
+		// sbResult.Append(string.Format("Now please submit your score or try again by clicking on your image to take another picture."));
 
 		return sbResult.ToString();
 	}
