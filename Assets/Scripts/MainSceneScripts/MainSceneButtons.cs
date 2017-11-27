@@ -34,7 +34,6 @@ public class MainSceneButtons : MonoBehaviour
 
 	public void genericButton()
 	{
-		Debug.Log(audioPlayer.enabled);
 		source = GetComponent<AudioSource>();
 		source.ignoreListenerPause = true;
 		source.PlayOneShot(buttonClickSound);
