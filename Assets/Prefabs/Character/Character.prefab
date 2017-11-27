@@ -305,12 +305,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxSpeed: 8
   m_JumpForce: 800
-  PowerSpeed: 1.2
   powerUp: 0
+  PowerSpeed: 1.2
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
+  jumpSound: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
 --- !u!114 &114899157976238692
 MonoBehaviour:
   m_ObjectHideFlags: 1

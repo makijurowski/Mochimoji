@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
+  - WebCam
+  - PowerUp
+  - DPad
+  - Audio
+  - Text
+  - Anger Emoji
+  - Contempt Emoji
+  - Disgust Emoji
+  - Fear Emoji
+  - Happiness Emoji
+  - Neutral Emoji
+  - Sadness Emoji
+  - Surprise Emoji
+  - Panel
   layers:
   - Default
   - TransparentFX
@@ -40,4 +55,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Controls
+    uniqueID: 4106793243
+    locked: 0
+  - name: Controls_Panel
+    uniqueID: 1651234455
+    locked: 0
+  - name: GameOver
+    uniqueID: 3779021187
+    locked: 0
+  - name: GameStart
+    uniqueID: 3880362683
     locked: 0
