@@ -46,8 +46,10 @@ public class PowerUpScript : MonoBehaviour
             selectedEmoji = PowerUpScript.lastEmoji;
             try
             {
+                cam.gameObject.SetActive(true);
+                cam.enabled = true;
                 cam.Play();
-                cam.GetImage();
+                // cam.GetImage();
             }
             catch
             {
@@ -58,6 +60,8 @@ public class PowerUpScript : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
+        cam.gameObject.SetActive(true);
+        cam.enabled = true;
         selectedEmoji.gameObject.SetActive(true);
         lastEmoji = selectedEmoji.gameObject;
         selectedEmojiName = selectedEmoji.gameObject.tag;
@@ -69,6 +73,7 @@ public class PowerUpScript : MonoBehaviour
     {
         selectedEmoji.gameObject.SetActive(false);
         selectedEmojiName = "";
+        cam.enabled = false;
         modalPanelObject.SetActive(false);
     }
 }

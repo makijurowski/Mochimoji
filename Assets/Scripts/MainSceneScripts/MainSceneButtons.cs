@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainSceneButtons : MonoBehaviour
 {
 	public AudioClip buttonClickSound;
+	public AudioListener audioPlayer;
 	private AudioSource source;
 
 	public void loadStartSceneButton()
@@ -25,12 +26,19 @@ public class MainSceneButtons : MonoBehaviour
 	public void audioButton()
 	{
 		source = GetComponent<AudioSource>();
+		source.ignoreListenerPause = true;
 		source.PlayOneShot(buttonClickSound);
+		// Accessing Audio Listener on Main Camera by type
+		AudioListener.pause = !AudioListener.pause;
 	}
 
 	public void genericButton()
 	{
+		Debug.Log(audioPlayer.enabled);
 		source = GetComponent<AudioSource>();
+		source.ignoreListenerPause = true;
 		source.PlayOneShot(buttonClickSound);
+		// Accessing Audio Listener on Main Camera through object instance
+		audioPlayer = gameObject.GetComponent<MainSceneButtons>().audioPlayer;
 	}
 }
