@@ -267,6 +267,15 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.7000122
       objectReference: {fileID: 0}
+    - target: {fileID: 1241986021599646, guid: 98882ab8505e1444087f4e192d61cf42, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114523768718528282, guid: 98882ab8505e1444087f4e192d61cf42,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents:
     - {fileID: 114257356590694586, guid: 98882ab8505e1444087f4e192d61cf42, type: 2}
     - {fileID: 114069360224530780, guid: 98882ab8505e1444087f4e192d61cf42, type: 2}

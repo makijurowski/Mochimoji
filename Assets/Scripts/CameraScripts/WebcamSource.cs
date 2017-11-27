@@ -10,9 +10,8 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 	public bool flipHorizontally = false;
 	[Tooltip("Selected web-camera name, if any.")]
 	public string webcamName;
-	private WebCamTexture webcamTex; 					// The web-camera texture
-	private bool bTexResolutionSet = false;				// Whether the output aspect ratio is set
-	public static WebCamDevice[] devices;				// Variable to hold webcam devices
+	private WebCamTexture webcamTex; // The webcam texture
+	public static WebCamDevice[] devices; // Variable to hold webcam devices
 
 	public virtual void Awake()
 	{
@@ -22,9 +21,16 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 			{
 				devices = WebCamTexture.devices;
 			}
-			if (string.IsNullOrEmpty(webcamName))		// Get 1st webcam name, if not set
+			if (string.IsNullOrEmpty(webcamName))
 			{
-				webcamName = devices[0].name;
+				foreach (WebCamDevice device in devices)
+				{
+					if (device.isFrontFacing)
+					{
+						webcamName = device.name;
+						break;
+					}
+				}
 			}
 		}
 
@@ -44,11 +50,14 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 				Debug.Log(sbWebcams.ToString());
 
 				// Create webcam tex
-				webcamTex = new WebCamTexture(webcamName);
-
-				OnApplyTexture(webcamTex);
-
-				bTexResolutionSet = false;
+				if (!webcamTex)
+				{
+					webcamTex = new WebCamTexture(webcamName);
+				}
+				else
+				{
+					OnApplyTexture(webcamTex);
+				}
 			}
 
 			if (flipHorizontally)
@@ -74,7 +83,14 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 			}
 			if (string.IsNullOrEmpty(webcamName))
 			{
-				webcamName = devices[0].name;
+				foreach (WebCamDevice device in devices)
+				{
+					if (device.isFrontFacing)
+					{
+						webcamName = device.name;
+						break;
+					}
+				}
 			}
 		}
 
@@ -83,11 +99,14 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 			if (devices.Length > 0 && webcamName.Length > 0)
 			{
 				// Create webcam tex
-				webcamTex = new WebCamTexture(webcamName);
-
-				OnApplyTexture(webcamTex);
-
-				bTexResolutionSet = false;
+				if (!webcamTex)
+				{
+					webcamTex = new WebCamTexture(webcamName);
+				}
+				else
+				{
+					OnApplyTexture(webcamTex);
+				}
 
 				if (flipHorizontally)
 				{
@@ -105,10 +124,9 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 
 	public void Update()
 	{
-		if (!bTexResolutionSet && webcamTex != null && webcamTex.isPlaying)
+		if (webcamTex != null && webcamTex.isPlaying)
 		{
 			OnSetAspectRatio(webcamTex.width, webcamTex.height);
-			bTexResolutionSet = true;
 			webcamTex.Play();
 		}
 	}
@@ -129,7 +147,7 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 	public Texture2D GetImage()
 	{
 
-		Texture2D snap = new Texture2D(webcamTex.width, webcamTex.height, TextureFormat.ARGB32, false);
+		Texture2D snap = new Texture2D(webcamTex.width, webcamTex.height);
 
 		if (webcamTex)
 		{
@@ -158,7 +176,7 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 		if (rawimage)
 		{
 			rawimage.texture = tex;
-			//rawimage.material.mainTexture = tex;
+			rawimage.material.mainTexture = tex;
 		}
 	}
 

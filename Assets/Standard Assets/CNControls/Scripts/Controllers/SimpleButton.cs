@@ -12,7 +12,7 @@ namespace CnControls
         /// <summary>
         /// The name of the button
         /// </summary>
-        public string ButtonName = "Jump";
+        public string ButtonName;
 
         /// <summary>
         /// Utility object that is registered in the system

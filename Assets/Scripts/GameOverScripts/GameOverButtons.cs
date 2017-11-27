@@ -18,6 +18,6 @@ public class GameOverButtons : MonoBehaviour {
     {
         source = GetComponent<AudioSource>();
         source.PlayOneShot(buttonClickSound);
-        SceneManager.LoadSceneAsync("LoginRegisterScene", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("GameStartScene", LoadSceneMode.Single);
     }
 }
