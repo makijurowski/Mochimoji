@@ -16,11 +16,11 @@ public class PowerUpScript : MonoBehaviour
 
     private void Awake()
     {
-        try 
+        try
         {
             cam.Awake();
         }
-        catch 
+        catch
         {
             Debug.Log("No cam to awaken.");
         }
@@ -48,13 +48,13 @@ public class PowerUpScript : MonoBehaviour
         {
             // Add audio when player collides with powerUp
             modalPanelObject.SetActive(true);
+            modalPanelObject.gameObject.transform.parent.Find("WhiteBackgroundPanel").gameObject.SetActive(true);
             selectedEmoji = PowerUpScript.lastEmoji;
             try
             {
                 cam.gameObject.SetActive(true);
                 cam.enabled = true;
                 cam.Play();
-                // cam.GetImage();
             }
             catch
             {
@@ -80,5 +80,6 @@ public class PowerUpScript : MonoBehaviour
         selectedEmojiName = "";
         cam.enabled = false;
         modalPanelObject.SetActive(false);
+        modalPanelObject.gameObject.transform.parent.Find("WhiteBackgroundPanel").gameObject.SetActive(false);
     }
 }
