@@ -31,6 +31,11 @@ public class PowerUpScript : MonoBehaviour
         selectedEmoji = randomEmojis[UnityEngine.Random.Range(0, 8)];
     }
 
+    void Update()
+    {
+
+    }
+
     // If Player collides with PowerUp, then text will be triggered.
     void OnTriggerEnter2D(Collider2D collision)
     {
