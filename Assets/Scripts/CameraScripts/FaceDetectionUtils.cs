@@ -48,7 +48,7 @@ public static class FaceDetectionUtils
 			currentScores = face.emotion.scores;
 		}
 
-		sbResult.Append(string.Format("This score was determined based on our detection of you as a {0:F0}-year-old {1} with approximately {2:F0}% smile.", face.faceAttributes.age, face.faceAttributes.gender, face.faceAttributes.smile * 100f)).AppendLine();
+		// sbResult.Append(string.Format("This score was determined based on our detection of you as a {0:F0}-year-old {1} with approximately {2:F0}% smile.", face.faceAttributes.age, face.faceAttributes.gender, face.faceAttributes.smile * 100f)).AppendLine();
 		// sbResult.Append(string.Format("Now please submit your score or try again by clicking on your image to take another picture."));
 
 		return sbResult.ToString();
@@ -72,7 +72,7 @@ public static class FaceDetectionUtils
 		switch (currentEmoji)
 		{
 			case "Anger Emoji":
-				emotStr.AppendFormat("<b>Emoji</b>: {0}", currentEmoji).AppendLine();
+				emotStr.AppendFormat("Emoji: {0}", currentEmoji).AppendLine();
 				emotStr.AppendFormat("Emotion: Anger").AppendLine();
 				emotStr.AppendFormat("Your score: {0:F0}%", es.anger * 100f).AppendLine().AppendLine();
 				break;

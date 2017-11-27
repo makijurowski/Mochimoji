@@ -13,7 +13,7 @@ using System.Threading;
 public class CloudFaceManager : MonoBehaviour 
 {
 	[Tooltip("Service location for Face API.")]
-	public string faceServiceLocation = "westus";
+	public string faceServiceLocation = "westus2";
 
 	[Tooltip("Subscription key for Face API.")]
 	public string faceSubscriptionKey;
@@ -274,22 +274,22 @@ public class CloudFaceManager : MonoBehaviour
 	
 	// draw face rectangles
 	/// <summary>
-	/// Draws the face rectacgles in the given texture.
+	/// Draws the face rectangles in the given texture.
 	/// </summary>
 	/// <param name="faces">List of faces.</param>
 	/// <param name="tex">The camera shot texture</param>
 	public static void DrawFaceRects(Texture2D tex, Face[] faces, Color[] faceColors)
 	{
-		for(int i = 0; i < faces.Length; i++)
-		{
-			Face face = faces[i];
-			Color faceColor = faceColors[i % faceColors.Length];
+		// for(int i = 0; i < faces.Length; i++)
+		// {
+		// 	Face face = faces[i];
+		// 	Color faceColor = faceColors[i % faceColors.Length];
 			
-			FaceRectangle rect = face.faceRectangle;
-			CloudTexTools.DrawRect(tex, rect.left, rect.top, rect.width, rect.height, faceColor);
-		}
+		// 	FaceRectangle rect = face.faceRectangle;
+		// 	CloudTexTools.DrawRect(tex, rect.left, rect.top, rect.width, rect.height, faceColor);
+		// }
 		
-		tex.Apply();
+		// tex.Apply();
 	}
 
 
