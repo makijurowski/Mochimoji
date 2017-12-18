@@ -23,7 +23,7 @@ namespace CnControls
 		private int _lastPressedFrame = -1;
 
 		/// <summary>
-		/// The last frame this butto was released
+		/// The last frame this button was released
 		/// </summary>
 		private int _lastReleasedFrame = -1;
 
@@ -33,7 +33,7 @@ namespace CnControls
 		}
 
 		/// <summary>
-		/// Press logic sets the current state of the button to "IsPressed" untill the Release() method is called
+		/// Press logic sets the current state of the button to "IsPressed" until the Release() method is called
 		/// </summary>
 		public void Press()
 		{
