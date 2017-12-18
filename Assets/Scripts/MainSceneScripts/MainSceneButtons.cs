@@ -23,6 +23,13 @@ public class MainSceneButtons : MonoBehaviour
 		SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
 	}
 
+	public void quitGameButton()
+	{
+		source = GetComponent<AudioSource>();
+		source.PlayOneShot(buttonClickSound);
+		Application.Quit();
+	}
+
 	public void audioButton()
 	{
 		source = GetComponent<AudioSource>();
