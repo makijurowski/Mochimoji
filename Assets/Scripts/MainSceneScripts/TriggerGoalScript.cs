@@ -28,6 +28,7 @@ public class TriggerGoalScript : MonoBehaviour {
 
             // Add audio when player triggers treasure chest.
             source.PlayOneShot(goalSound);
+            SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
         }
     }
 
@@ -38,10 +39,7 @@ public class TriggerGoalScript : MonoBehaviour {
             triggeredText.gameObject.SetActive(true);
 
             // If Player presses "x", it will load the Game Over scene.
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
-            }
+            SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
         }
     }
 
