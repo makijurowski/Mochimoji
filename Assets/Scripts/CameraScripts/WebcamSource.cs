@@ -12,6 +12,7 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 	public string webcamName;
 	private WebCamTexture webcamTex; // The webcam texture
 	public static WebCamDevice[] devices; // Variable to hold webcam devices
+	public Quaternion baseRotation; // Used to rotate webcam to match screen orientation
 
 	public virtual void Awake()
 	{
@@ -108,10 +109,11 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 					OnApplyTexture(webcamTex);
 				}
 
-				if (flipHorizontally)
+				if (Application.platform == RuntimePlatform.Android)
 				{
 					Vector3 scale = transform.localScale;
 					transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+					baseRotation = transform.rotation;
 				}
 
 				if (HasCamera())
@@ -126,6 +128,11 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 	{
 		if (webcamTex != null && webcamTex.isPlaying)
 		{
+			int rotationAngle = -webcamTex.videoRotationAngle;
+			while ( rotationAngle < 0 ) rotationAngle += 360;
+			while ( rotationAngle > 360 ) rotationAngle -= 360;
+			transform.rotation = baseRotation * Quaternion.AngleAxis(rotationAngle, Vector3.up);
+
 			OnSetAspectRatio(webcamTex.width, webcamTex.height);
 			webcamTex.Play();
 		}

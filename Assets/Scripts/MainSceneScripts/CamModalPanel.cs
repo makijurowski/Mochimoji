@@ -25,9 +25,4 @@ public class CamModalPanel : MonoBehaviour
     {
         modalPanelObject.SetActive(false);
     }
-
-    // public static void StaticClosePanel()
-    // {
-    //     CamModalPanel.modalPanel.gameObject.SetActive(false);
-    // }
 }

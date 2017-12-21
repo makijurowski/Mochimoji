@@ -19,6 +19,8 @@ TagManager:
   - Sadness Emoji
   - Surprise Emoji
   - Panel
+  - BlackCamera
+  - Emoji Panel
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: 81e9a2acb590645939210373a4e8372a
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  defaultScreenOrientation: 3
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -56,8 +56,8 @@ PlayerSettings:
   iosAppInBackgroundBehavior: 0
   displayResolutionDialog: 2
   iosAllowHTTPDownload: 1
-  allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToPortrait: 0
+  allowedAutorotateToPortraitUpsideDown: 0
   allowedAutorotateToLandscapeRight: 1
   allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
@@ -74,7 +74,7 @@ PlayerSettings:
   Force IOS Speakers When Recording: 0
   submitAnalytics: 1
   usePlayerLog: 1
-  bakeCollisionMeshes: 0
+  bakeCollisionMeshes: 1
   forceSingleInstance: 0
   resizableWindow: 1
   useMacAppStoreValidation: 0
@@ -124,13 +124,14 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleVersion: 1.0
+  bundleVersion: 1.1
   preloadedAssets:
   - {fileID: 11500000, guid: 98da477bea865434285a9c05e66f5db2, type: 3}
   - {fileID: 1378579086059794, guid: b980002ef87ca410490a27122c146352, type: 2}
   - {fileID: 1922650917473894, guid: 21f86ce400b534e71bcee429f1925a40, type: 2}
   - {fileID: 102900000, guid: 865fbe895bd804463908e19866433b7b, type: 3}
   - {fileID: 1577067781600064, guid: dceb00113309d45068a70fe4c852795e, type: 2}
+  - {fileID: 2800000, guid: a7ee1bf4937c9cb478020928b735f9ad, type: 3}
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
@@ -154,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 0
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.MakiRoggers.Mochimoji
+    Android: com.MochimojiTeam.Mochimoji
     Standalone: com.CDApprenti.Mochimoji
   buildNumber: {}
   AndroidBundleVersionCode: 1
@@ -165,7 +166,7 @@ PlayerSettings:
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
-  ForceInternetPermission: 0
+  ForceInternetPermission: 1
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
