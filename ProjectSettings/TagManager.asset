@@ -20,6 +20,7 @@ TagManager:
   - Surprise Emoji
   - Panel
   - BlackCamera
+  - Emoji Panel
   layers:
   - Default
   - TransparentFX

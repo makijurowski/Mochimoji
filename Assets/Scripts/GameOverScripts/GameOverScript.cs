@@ -15,10 +15,7 @@ public class GameOverScript : MonoBehaviour
         // Get logged username and score.
         string loggedUsername = PlayerPrefs.GetString("LoggedUser");
         int score = PlayerPrefs.GetInt("Player Score");
-
-        // Save score to user's account file.
-        // System.IO.File.AppendAllText(@"C:\Desktop\MochimojiUsers\" + loggedUsername + ".txt", "\r\n" + score.ToString());
-
+        
         // Get player's score from player preferences.
         if (loggedUsername.Length > 0)
         {
