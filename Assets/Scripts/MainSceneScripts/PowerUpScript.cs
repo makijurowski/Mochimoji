@@ -11,8 +11,7 @@ public class PowerUpScript : MonoBehaviour
     public static GameObject lastEmoji;
     public static string selectedEmojiName;
     // public GameObject emojiPanel;
-    // public EmojiPanelScript EmojiPanelScript;
-
+    // public EmojiPanelScript emojiPanelScript;
     public GameObject modalPanelObject;
     public WebcamSource cam;
 
@@ -51,6 +50,9 @@ public class PowerUpScript : MonoBehaviour
             // Add audio when player collides with powerUp
             modalPanelObject.SetActive(true);
             selectedEmoji = PowerUpScript.lastEmoji;
+            // emojiPanel.SetActive(true);
+            // emojiPanelScript = emojiPanel.GetComponent<EmojiPanelScript>();
+            // emojiPanelScript.currentEmoji = GameObject.FindGameObjectsWithTag(selectedEmojiName);
             // emojiPanel = collision.transform.parent.Find("Canvas").Find("Emoji Panel").gameObject;
             // EmojiPanelScript = emojiPanel.GetComponent<EmojiPanelScript>();
             // EmojiPanelScript.ShowEmojiImage(collision);
@@ -73,6 +75,7 @@ public class PowerUpScript : MonoBehaviour
         cam.gameObject.SetActive(true);
         cam.enabled = true;
         selectedEmoji.gameObject.SetActive(true);
+        // emojiPanel.gameObject.SetActive(true);
         lastEmoji = selectedEmoji.gameObject;
         selectedEmojiName = selectedEmoji.gameObject.tag;
         CloudFaceDetector.EmojiNameOnCloudScript = selectedEmoji.gameObject.tag;
@@ -86,6 +89,7 @@ public class PowerUpScript : MonoBehaviour
         selectedEmoji.gameObject.SetActive(false);
         selectedEmojiName = "";
         cam.enabled = false;
-        modalPanelObject.SetActive(false);
+        // emojiPanel.gameObject.SetActive(false);
+        modalPanelObject.gameObject.SetActive(false);
     }
 }
