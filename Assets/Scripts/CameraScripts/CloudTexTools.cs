@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CloudTexTools
 {
-	// flips texture horizontally
+	// Flips texture horizontally
 	public static Texture2D FlipTexture(Texture2D original)
 	{
 		Texture2D flipped = new Texture2D(original.width, original.height, TextureFormat.ARGB32, false);
@@ -24,7 +24,7 @@ public class CloudTexTools
 		return flipped;
 	}
 
-	// gets rectangular part of the specified texture
+	// Gets rectangular part of the specified texture
 	public static Texture2D GetTexturePart(Texture2D tex, int x, int y, int w, int h)
 	{
 		Color[] pixels = tex.GetPixels(x, y, w, h);
@@ -36,7 +36,7 @@ public class CloudTexTools
 		return destTex;
 	}
 
-	// draws rect in texture
+	// Draws rect in texture
 	public static void DrawRect(Texture2D a_Texture, int x, int y, int w, int h, Color a_Color)
 	{
 		DrawLine(a_Texture, x, y, x + w - 1, y, a_Color);  // top
@@ -45,7 +45,7 @@ public class CloudTexTools
 		DrawLine(a_Texture, x, y, x, y + h - 1, a_Color);  // left
 	}
 
-	// draws line in texture
+	// Draws line in texture
 	public static void DrawLine(Texture2D a_Texture, int x1, int y1, int x2, int y2, Color a_Color)
 	{
 		int width = a_Texture.width;
@@ -123,5 +123,4 @@ public class CloudTexTools
 		}
 		
 	}
-	
 }

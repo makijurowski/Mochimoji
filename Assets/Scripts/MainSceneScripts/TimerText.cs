@@ -41,4 +41,3 @@ public class TimerText : MonoBehaviour
         SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
     }
 }
-

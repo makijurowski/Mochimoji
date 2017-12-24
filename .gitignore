@@ -83,6 +83,7 @@ Thumbs.db
 .vscode/
 
 my-label-pkg.json
+
 *.pdf
 
 *.pdf.*
@@ -90,3 +91,5 @@ my-label-pkg.json
 *.txt
 
 *.txt.*
+
+user.keystore

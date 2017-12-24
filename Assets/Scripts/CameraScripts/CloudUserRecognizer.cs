@@ -24,26 +24,27 @@ public class CloudUserRecognizer : MonoBehaviour
 	[Tooltip("Reference to the user item prefab.")]
 	public GameObject userItemPrefab;
 
-    // whether webcamSource has been set or there is web camera at all
+    // Whether webcamSource has been set or there is web camera at all
     private bool hasCamera = false;
 
-    // initial hint message
+    // Initial hint message
     private string hintMessage;
 
     // AspectRatioFitter component;
     private AspectRatioFitter ratioFitter;
 
-	// list of found persons
+	// List of found persons
 	private Dictionary<string, GameObject> personsPanels = new Dictionary<string, GameObject>();
 	//private Face selectedPerson;
 
-	// array of faces
+	// Array of faces
 	private Face[] faces = null;
-	// array of identification results
-	private IdentifyResult[] results = null;
-	// camera shot texture
-	private Texture2D texCamShot = null;
 
+	// Array of identification results
+	private IdentifyResult[] results = null;
+
+	// Camera shot texture
+	private Texture2D texCamShot = null;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class CloudUserRecognizer : MonoBehaviour
         SetHintText(hintMessage);
     }
 
-    // camera panel onclick event handler
+    // Camera panel on-click event handler
     public void OnCameraClick()
     {
         if (!hasCamera) 
@@ -71,7 +72,7 @@ public class CloudUserRecognizer : MonoBehaviour
         }        
     }
 
-    // camera-shot panel onclick event handler
+    // Camera-shot panel on-click event handler
     public void OnShotClick()
     {
         if (DoImageImport())
@@ -80,7 +81,7 @@ public class CloudUserRecognizer : MonoBehaviour
         }
     }
 
-    // camera shot step
+    // Camera shot step
     private bool DoCameraShot()
     {
         if (cameraShot != null && imageSource != null)
@@ -92,7 +93,7 @@ public class CloudUserRecognizer : MonoBehaviour
         return false;
     }
 
-    // imports image and displays it on the camera-shot object
+    // Imports image and displays it on the camera-shot object
     private bool DoImageImport()
     {
         Texture2D tex = FaceDetectionUtils.ImportImage();
@@ -103,7 +104,7 @@ public class CloudUserRecognizer : MonoBehaviour
         return true;
     }
 
-	// display image on the camera-shot object
+	// Display image on the camera-shot object
 	private void SetShotImageTexture(Texture2D tex)
 	{        
 		if (ratioFitter)
@@ -117,10 +118,10 @@ public class CloudUserRecognizer : MonoBehaviour
 		}
 	}
 
-    // performs user recognition
+    // Performs user recognition
     private IEnumerator DoUserRecognition()
     {
-        // get the image to detect
+        // Get the image to detect
         faces = null;
         texCamShot = null;
 
@@ -130,7 +131,7 @@ public class CloudUserRecognizer : MonoBehaviour
             SetHintText("Wait...");
         }
 
-		// get the user manager instance
+		// Get the user manager instance
 		CloudUserManager userManager = CloudUserManager.Instance;
 
 		if (!userManager)
@@ -187,42 +188,16 @@ public class CloudUserRecognizer : MonoBehaviour
     // display identity results
     private void ShowIdentityResult()
     {
-//        StringBuilder sbResult = new StringBuilder();
-//
-//        if (faces != null && faces.Length > 0)
-//        {
-//            for (int i = 0; i < faces.Length; i++)
-//            {
-//                Face face = faces[i];
-//                string faceColorName = FaceDetectionUtils.FaceColorNames[i % FaceDetectionUtils.FaceColors.Length];
-//
-//                string res = FaceDetectionUtils.FaceToString(face, faceColorName);
-//
-//                sbResult.Append(string.Format("<color={0}>{1}</color>", faceColorName, res));
-//            }
-//        }
-//
-//        string result = sbResult.ToString();
-//
-//        if (resultText)
-//        {
-//            resultText.text = result;
-//        }
-//        else
-//        {
-//            Debug.Log(result);
-//        }
-
-		// clear current list
+		// Clear current list
 		ClearIdentityResult();
 
-		// create the new list
+		// Create the new list
 		if(faces != null)
 		{
-			// get face images
+			// Get face images
 			CloudFaceManager.MatchFaceImages(texCamShot, ref faces);
 
-			// show recognized persons
+			// Show recognized persons
 			for(int i = 0; i < faces.Length; i++)
 			{
 				Face face = faces[i];
@@ -233,7 +208,7 @@ public class CloudUserRecognizer : MonoBehaviour
 				}
 			}
 
-			// show unrecognized faces
+			// Show unrecognized faces
 			for(int i = 0; i < faces.Length; i++)
 			{
 				Face face = faces[i];
@@ -263,12 +238,6 @@ public class CloudUserRecognizer : MonoBehaviour
 		GameObject userNameObj = userItemInstance.transform.Find("UserName").gameObject;
 		userNameObj.GetComponent<Text>().text = userName;
 
-//		GameObject personIdObj = userItemInstance.transform.Find("PersonID").gameObject;
-//		personIdObj.GetComponent<Text>().text = p != null ? "UserID: " + p.personId : string.Empty;
-
-//		GameObject faceIdObj = userItemInstance.transform.Find("FaceID").gameObject;
-//		faceIdObj.GetComponent<Text>().text = "FaceID: " + f.faceId;
-
 		if(p != null)
 		{
 			Dictionary<string, string> dUserData = CloudUserManager.ConvertInfoToDict(p.userData);
@@ -290,14 +259,9 @@ public class CloudUserRecognizer : MonoBehaviour
 		}
 		else
 		{
-//			GameObject nameHintObj = userItemInstance.transform.Find("NameHint").gameObject;
-//			nameHintObj.SetActive(true);
 
 			GameObject saveNameObj = userItemInstance.transform.Find("SaveName").gameObject;
 			saveNameObj.SetActive(true);
-
-//			GameObject infoHintObj = userItemInstance.transform.Find("InfoHint").gameObject;
-//			infoHintObj.SetActive(true);
 
 			GameObject saveInfoObj = userItemInstance.transform.Find("SaveInfo").gameObject;
 			saveInfoObj.SetActive(true);
@@ -310,7 +274,7 @@ public class CloudUserRecognizer : MonoBehaviour
 			InputField saveInfoInput = saveInfoObj.GetComponent<InputField>();
 			saveButton.onClick.AddListener(() => OnSaveUserClick(f, saveNameInput, saveInfoInput));
 
-			// disable selectable panel
+			// Disable selectable panel
 			userItemInstance.GetComponent<Selectable>().enabled = false;
 		}
 
@@ -339,13 +303,13 @@ public class CloudUserRecognizer : MonoBehaviour
 
 		SetHintText("Selected: " + (userData ? userData.selectedUser.candidate.person.name : "-"));
 
-		// load the main scene
+		// Load the main scene
 		SceneManager.LoadScene(1);
 	}
 
 	private void OnSaveUserClick(Face f, InputField saveNameInput, InputField safeInfoInput)
 	{
-		// create user info string
+		// Create user info string
 		Dictionary<string, string> dUserInfo = new Dictionary<string, string>();
 
 		if(safeInfoInput.text != null && safeInfoInput.text.Trim() != string.Empty)
@@ -363,11 +327,11 @@ public class CloudUserRecognizer : MonoBehaviour
 
 		string sUserInfo = CloudUserManager.ConvertDictToInfo(dUserInfo);
 
-		// create the user
+		// Create the user
 		StartCoroutine(AddUserToGroup(f, saveNameInput.text, sUserInfo));
 	}
 
-	// creates new user and adds it to the user group
+	// Creates new user and adds it to the user group
 	private IEnumerator AddUserToGroup(Face face, string userName, string userInfo)
 	{
 		CloudUserManager userManager = CloudUserManager.Instance;
@@ -393,7 +357,7 @@ public class CloudUserRecognizer : MonoBehaviour
 				yield return null;
 			}
 
-			// get the resulting person
+			// Get the resulting person
 			Person person = task.Result;
 
 			if(!string.IsNullOrEmpty(task.ErrorMessage))
@@ -441,7 +405,7 @@ public class CloudUserRecognizer : MonoBehaviour
 		yield return null;
 	}
 
-    // clear the list of displayed identity results
+    // Clear the list of displayed identity results
     private void ClearIdentityResult()
     {
 		foreach(GameObject panel in personsPanels.Values)
@@ -453,7 +417,7 @@ public class CloudUserRecognizer : MonoBehaviour
 		personsPanels.Clear();
     }
 
-    // displays hint or status text
+    // Displays hint or status text
     private void SetHintText(string sHintText)
     {
         if (hintText)
@@ -465,5 +429,4 @@ public class CloudUserRecognizer : MonoBehaviour
             Debug.Log(sHintText);
         }
     }
-
 }

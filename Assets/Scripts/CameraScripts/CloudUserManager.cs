@@ -13,8 +13,8 @@ public class CloudUserManager : MonoBehaviour
 	[Tooltip("Whether group existence should be checked at start.")]
 	public bool checkGroupAtStart = true;
 
-	[Tooltip("GUI text used for debug and status messages.")]
-	public GUIText debugText;
+	// [Tooltip("GUI text used for debug and status messages.")]
+	// public GUIText debugText;
 
 	// the face manager
 	private CloudFaceManager faceManager = null;
@@ -28,8 +28,6 @@ public class CloudUserManager : MonoBehaviour
 	private static CloudUserManager instance = null;
 	private string initedGroupId = string.Empty;
 
-
-
 	/// <summary>
 	/// Gets the CloudUserManager instance.
 	/// </summary>
@@ -42,7 +40,6 @@ public class CloudUserManager : MonoBehaviour
 		}
 	}
 	
-	
 	/// <summary>
 	/// Determines whether the UserGroupManager is initialized.
 	/// </summary>
@@ -51,7 +48,6 @@ public class CloudUserManager : MonoBehaviour
 	{
 		return (userGroupId == initedGroupId);
 	}
-	
 	
 	void Start() 
 	{
@@ -104,18 +100,13 @@ public class CloudUserManager : MonoBehaviour
 		{
 			Debug.LogError(ex.Message + '\n' + ex.StackTrace);
 
-			if(debugText != null)
-			{
-				debugText.text = ex.Message;
-			}
+			// if(debugText != null)
+			// {
+			// 	debugText.text = ex.Message;
+			// }
 		}
 	}
 	
-	void Update () 
-	{
-	}
-
-
 	/// <summary>
 	/// Starts group training.
 	/// </summary>
@@ -135,7 +126,6 @@ public class CloudUserManager : MonoBehaviour
 
 		return false;
 	}
-
 
 	/// <summary>
 	/// Gets the group training status.
@@ -159,7 +149,6 @@ public class CloudUserManager : MonoBehaviour
 		return training;
 	}
 	
-	
 	/// <summary>
 	/// Determines whether the group training is finished.
 	/// </summary>
@@ -179,8 +168,7 @@ public class CloudUserManager : MonoBehaviour
 		
 		return false;
 	}
-	
-	
+		
 	/// <summary>
 	/// Identifies the users on the image.
 	/// </summary>
@@ -196,7 +184,6 @@ public class CloudUserManager : MonoBehaviour
 		byte[] imageBytes = texImage.EncodeToJPG();
 		return IdentifyUsers(imageBytes, ref faces, ref results);
 	}
-
 
 	/// <summary>
 	/// Identifies the users on the image.
@@ -276,7 +263,6 @@ public class CloudUserManager : MonoBehaviour
 		return false;
 	}
 
-
 	/// <summary>
 	/// Gets the list of users in this group.
 	/// </summary>
@@ -301,7 +287,6 @@ public class CloudUserManager : MonoBehaviour
 		return null;
 	}
 
-
 	/// <summary>
 	/// Gets the user by ID.
 	/// </summary>
@@ -323,7 +308,6 @@ public class CloudUserManager : MonoBehaviour
 		return person;
 	}
 	
-	
 	/// <summary>
 	/// Adds the user to group.
 	/// </summary>
@@ -340,7 +324,6 @@ public class CloudUserManager : MonoBehaviour
 		byte[] imageBytes = texImage != null ? texImage.EncodeToJPG() : null;
 		return AddUserToGroup(userName, userData, imageBytes, faceRect);
 	}
-
 
 	/// <summary>
 	/// Adds the user to group.
@@ -406,7 +389,6 @@ public class CloudUserManager : MonoBehaviour
 		return null;
 	}
 
-
 	/// <summary>
 	/// Adds the user to group.
 	/// </summary>
@@ -431,7 +413,6 @@ public class CloudUserManager : MonoBehaviour
 		return person;
 	}
 
-
 	/// <summary>
 	/// Adds the face to user.
 	/// </summary>
@@ -447,7 +428,6 @@ public class CloudUserManager : MonoBehaviour
 		byte[] imageBytes = texImage != null ? texImage.EncodeToJPG() : null;
 		return AddFaceToUser(person, imageBytes, faceRect);
 	}
-
 
 	/// <summary>
 	/// Adds face to the user.
@@ -478,7 +458,6 @@ public class CloudUserManager : MonoBehaviour
 		return string.Empty;
 	}
 	
-	
 	/// <summary>
 	/// Updates the person's name or userData field.
 	/// </summary>
@@ -495,7 +474,6 @@ public class CloudUserManager : MonoBehaviour
 			faceManager.UpdatePersonData(userGroupId, person);
 		}
 	}
-	
 	
 	/// <summary>
 	/// Deletes existing person from a person group. Persisted face images of the person will also be deleted. 
@@ -514,7 +492,6 @@ public class CloudUserManager : MonoBehaviour
 			faceManager.TrainPersonGroup(userGroupId);
 		}
 	}
-
 
 	/// <summary>
 	/// Converts user info string to dictionary.
@@ -550,7 +527,6 @@ public class CloudUserManager : MonoBehaviour
 		return dUserInfos;
 	}
 
-
 	/// <summary>
 	/// Converts the dictionary of user infos to string.
 	/// </summary>
@@ -574,7 +550,6 @@ public class CloudUserManager : MonoBehaviour
 
 		return sbUserInfo.ToString();
 	}
-	
 	
 	// gets the person group info
 	private void GetOrGreateUserGroup()
@@ -602,5 +577,4 @@ public class CloudUserManager : MonoBehaviour
 			initedGroupId = (personGroup != null) ? personGroup.personGroupId : string.Empty;
 		}
 	}
-
 }

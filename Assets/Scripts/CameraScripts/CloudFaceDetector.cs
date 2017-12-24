@@ -34,6 +34,13 @@ public class CloudFaceDetector : MonoBehaviour
     // Name of current emoji
     public static string EmojiNameOnCloudScript;
 
+    // Emoji pop-up panel
+    public GameObject[] emojiPanelList;
+    public static GameObject[] staticEmojiPanelList;
+
+    // Current emoji to make active
+    public GameObject currentEmoji;
+
     // Submit button
     public Button submitButton;
 
@@ -45,6 +52,10 @@ public class CloudFaceDetector : MonoBehaviour
 
     void Start()
     {
+        if (emojiPanelList.Length > 0)
+        {
+            staticEmojiPanelList = emojiPanelList;
+        }
         if (cameraShot)
         {
             ratioFitter = cameraShot.GetComponent<AspectRatioFitter>();
@@ -57,6 +68,45 @@ public class CloudFaceDetector : MonoBehaviour
     {
         hintMessage = hasCamera ? "Match your face to the " + EmojiNameOnCloudScript + " and take a picture!" : "No camera found...";
         SetHintText(hintMessage);
+        if (currentEmoji) 
+        {
+            currentEmoji.gameObject.SetActive(false);
+        }
+        switch (EmojiNameOnCloudScript)
+        {
+			case "Fear Emoji":
+				currentEmoji = emojiPanelList[3];
+				break;
+			case "Happiness Emoji":
+				currentEmoji = emojiPanelList[7];
+				break;
+			case "Neutral Emoji":
+				currentEmoji = emojiPanelList[6];
+				break;
+			case "Disgust Emoji":
+				currentEmoji = emojiPanelList[2];
+				break;
+			case "Contempt Emoji":
+				currentEmoji = emojiPanelList[1];
+				break;
+			case "Surprise Emoji":
+				currentEmoji = emojiPanelList[4];
+				break;
+			case "Sadness Emoji":
+				currentEmoji = emojiPanelList[5];
+				break;
+			case "Anger Emoji":
+				currentEmoji = emojiPanelList[0];
+				break;
+			default:
+				System.Console.WriteLine("This did not work");
+				break;
+        }
+        if (currentEmoji)
+        {
+            currentEmoji.gameObject.SetActive(true);
+            currentEmoji.gameObject.transform.SetAsLastSibling();
+        }
     }
 
     // Camera panel on-click event handler

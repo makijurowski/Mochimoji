@@ -155,7 +155,6 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 	{
 
 		Texture2D snap = new Texture2D(webcamTex.width, webcamTex.height);
-
 		if (webcamTex)
 		{
 			snap.SetPixels(webcamTex.GetPixels());
@@ -166,9 +165,7 @@ public class WebcamSource : MonoBehaviour, ImageSourceInterface
 				snap = CloudTexTools.FlipTexture(snap);
 			}
 		}
-
 		return snap;
-		//return _textureFromCamera;
 	}
 
 	// Check if there is web camera

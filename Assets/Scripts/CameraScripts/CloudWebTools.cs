@@ -9,7 +9,6 @@ using System.Net.Security;
 
 public class CloudWebTools 
 {
-
 	// calls web service with url, content and headers
 	public static HttpWebResponse DoWebRequest(string requestUrl, string method, string contentType, byte[] content, Dictionary<string, string> headers, bool bAwaitResponse, bool bStopOnError)
 	{
@@ -31,14 +30,11 @@ public class CloudWebTools
 
 		if(content != null)
 		{
-			//using (StreamWriter streamWriter = new StreamWriter(webRequest.GetRequestStream()))
 			using (Stream stream = webRequest.GetRequestStream())
 			{
 				stream.Write(content, 0, content.Length);
 			}
 		}
-
-		// 'bAwaitResponse = false' - not yet implemented
 		HttpWebResponse httpResponse = null;
 
 		try 
@@ -54,7 +50,6 @@ public class CloudWebTools
 				throw new Exception(ex.Message + " - " + requestUrl);
 			}
 		}
-
 		return httpResponse;
 	}
 
@@ -85,8 +80,7 @@ public class CloudWebTools
 		return isOk;
 	}
 
-
-	// returns the response status code
+	// Returns the response status code
 	public static int GetStatusCode(HttpWebResponse response)
 	{
 		int status = -1;
@@ -99,14 +93,14 @@ public class CloudWebTools
 		return status;
 	}
 	
-	// checks if the response status is error
+	// Checks if the response status is error
 	public static bool IsErrorStatus(HttpWebResponse response)
 	{
 		int status = GetStatusCode(response);
 		return (status >= 300);
 	}
 	
-	// returns the response status message
+	// Returns the response status message
 	public static string GetStatusMessage(HttpWebResponse response)
 	{
 		string message = string.Empty;
@@ -118,7 +112,4 @@ public class CloudWebTools
 		
 		return message.Trim();
 	}
-	
-	
-
 }

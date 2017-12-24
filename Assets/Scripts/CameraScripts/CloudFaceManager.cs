@@ -24,8 +24,6 @@ public class CloudFaceManager : MonoBehaviour
 	[Tooltip("Subscription key for Emotion API.")]
 	public string emotionSubscriptionKey;
 
-	//private const string FaceServiceHost = "https://api.projectoxford.ai/face/v1.0";
-	//private const string EmotionServiceHost = "https://api.projectoxford.ai/emotion/v1.0";
 	private const string FaceServiceHost = "https://[location].api.cognitive.microsoft.com/face/v1.0";
 	private const string EmotionServiceHost = "https://[location].api.cognitive.microsoft.com/emotion/v1.0";
 
@@ -34,7 +32,6 @@ public class CloudFaceManager : MonoBehaviour
 
 	private static CloudFaceManager instance = null;
 	private bool isInitialized = false;
-
 
 	void Awake() 
 	{
