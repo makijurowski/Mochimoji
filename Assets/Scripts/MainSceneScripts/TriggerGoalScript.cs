@@ -10,7 +10,7 @@ public class TriggerGoalScript : MonoBehaviour {
     public Text triggeredText;
 
     // Audio triggers
-    public AudioClip goalSound;
+    // public AudioClip goalSound;
     private AudioSource source;
 
 
@@ -22,8 +22,8 @@ public class TriggerGoalScript : MonoBehaviour {
             triggeredText.gameObject.SetActive(true);
 
             // Add audio when player triggers treasure chest.
-            source = GetComponent<AudioSource>();
-            source.PlayOneShot(goalSound);
+            // source = GetComponent<AudioSource>();
+            // source.PlayOneShot(goalSound);
             SceneManager.LoadSceneAsync("GameOverScene", LoadSceneMode.Single);
         }
     }
