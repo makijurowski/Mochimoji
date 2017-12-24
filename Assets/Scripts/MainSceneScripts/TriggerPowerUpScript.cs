@@ -49,7 +49,7 @@ public class TriggerPowerUpScript : MonoBehaviour {
 				break;
 			case "Fear Emoji":
 				emotStr.Append(string.Format(" Fear Emoji & Fear Score: {0:F0}%", currentScores.fear * 100f)).AppendLine();
-				emotionScore = currentScores.disgust;
+				emotionScore = currentScores.fear;
 				break;
 			case "Happiness Emoji":
 				emotStr.Append(string.Format(" Happiness Emoji & Happiness Score: {0:F0}%", currentScores.happiness * 100f)).AppendLine();
