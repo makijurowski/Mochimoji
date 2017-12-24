@@ -9,7 +9,6 @@ public class GameOverScript : MonoBehaviour
     public Text playerScoreText;
     public Text highestScoreText;
 
-
     void Start()
     {
         // Get logged username and score.

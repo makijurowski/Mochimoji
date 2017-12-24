@@ -34,8 +34,11 @@ public class CloudFaceDetector : MonoBehaviour
     // Name of current emoji
     public static string EmojiNameOnCloudScript;
 
+    // Emoji pop-up panel
     public GameObject[] emojiPanelList;
     public static GameObject[] staticEmojiPanelList;
+
+    // Current emoji to make active
     public GameObject currentEmoji;
 
     // Submit button

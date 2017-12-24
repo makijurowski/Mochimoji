@@ -6,10 +6,8 @@ public class CloudUserData : MonoBehaviour
 	[Tooltip("The selected user, if any.")]
 	public Face selectedUser;
 
-
-	// singleton class instance
+	// Singleton class instance
 	private static CloudUserData instance = null;
-
 
 	/// <summary>
 	/// Gets the instance.
@@ -23,7 +21,6 @@ public class CloudUserData : MonoBehaviour
 		}
 	}
 
-
 	/// <summary>
 	/// Clears the selected user.
 	/// </summary>
@@ -31,7 +28,6 @@ public class CloudUserData : MonoBehaviour
 	{
 		selectedUser = null;
 	}
-
 
 	private void Awake()
 	{
@@ -45,5 +41,4 @@ public class CloudUserData : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
-
 }

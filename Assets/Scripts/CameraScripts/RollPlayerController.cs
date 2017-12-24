@@ -15,7 +15,6 @@ public class RollPlayerController : MonoBehaviour
 	private Rigidbody rb;
 	private int counter = 0;
 
-
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -23,7 +22,7 @@ public class RollPlayerController : MonoBehaviour
 		if(counterText)
 			counterText.text = "Collect the cubes";
 
-		// show the logged-in user
+		// Show the logged-in user
 		CloudUserData userData = CloudUserData.Instance;
 
 		string userLogged = "No user logged in";
@@ -31,18 +30,17 @@ public class RollPlayerController : MonoBehaviour
 
 		if(userData && userData.selectedUser != null)
 		{
-			// user was selected on previous scene
+			// User was selected on previous scene
 			userLogged = userData.selectedUser.candidate.person.name;
 			userLoggedImage = userData.selectedUser.faceImage;
 		}
 
-		// show the user name and image
+		// Show the user name and image
 		if(userText)
 			userText.text = userLogged;
 		if(userImage)
 			userImage.texture = userLoggedImage;
 	}
-
 
 	void Update () 
 	{
@@ -56,7 +54,6 @@ public class RollPlayerController : MonoBehaviour
 			rb.AddForce (0, 300, 0);
 		}
 	}
-
 
 	void OnTriggerEnter(Collider other) 
 	{
@@ -73,8 +70,7 @@ public class RollPlayerController : MonoBehaviour
 		}
 	}
 
-
-	// invoked when the logout button gets pressed
+	// Invoked when the logout button gets pressed
 	public void OnLogoutPressed()
 	{
 		CloudUserData userData = CloudUserData.Instance;
@@ -84,14 +80,13 @@ public class RollPlayerController : MonoBehaviour
 			userData.ClearSelectedUser();
 		}
 
-		// show the user name and image
+		// Show the user name and image
 		if(userText)
 			userText.text = "No user logged in";
 		if(userImage)
 			userImage.texture = null;
 
-		// go back tp the login-scene
+		// Go back tp the login-scene
 		SceneManager.LoadScene(0);
 	}
-
 }

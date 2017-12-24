@@ -24,14 +24,6 @@ public class SplitviewController : MonoBehaviour {
 
     private bool drag = false;
 
-    void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
-
     // Called when mouse enters splitbar in order to set custom resize cursor
     public void OnMouseEnter()
     {

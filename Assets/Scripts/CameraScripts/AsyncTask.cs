@@ -18,7 +18,6 @@ public class AsyncTask<T>
     private T _result;
 	private string _errorMessage;
 
-
     public AsyncTask(Func<T> backgroundAction)
     {
         this._action = backgroundAction;

@@ -18,5 +18,3 @@ public interface ImageSourceInterface
 	/// <returns><c>true</c> if the image source camera is working; otherwise, <c>false</c>.</returns>
 	bool HasCamera();
 }
-
-

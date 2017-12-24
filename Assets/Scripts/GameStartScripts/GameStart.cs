@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class GameStart : MonoBehaviour
 {
-
     private InstructionPanel instructionPanel;
 
     // Audio triggers

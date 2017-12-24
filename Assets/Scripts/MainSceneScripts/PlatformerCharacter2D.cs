@@ -20,7 +20,7 @@ namespace UnityStandardAssets._2D
         const float k_GroundedRadius = .2f;                     // Radius of the overlap circle to determine if grounded
         private bool m_Grounded;                                // Whether or not the player is grounded
         private Animator m_Anim;                                // Reference to the player's animator component
-        private Rigidbody2D m_Rigidbody2D;
+        private Rigidbody2D m_Rigidbody2D;                      // Reference to the player's rigidbody2D component
         private bool m_FacingRight = true;                      // For determining which way the player is currently facing
         bool m_DoubleJump = false;                              // Add double-jump
         public AudioClip jumpSound;                             // Add audio
